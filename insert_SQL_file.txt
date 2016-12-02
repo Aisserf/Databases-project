@@ -38,3 +38,24 @@ INSERT INTO Limited_courses (max_nr_studs, course_code) VALUES ('400','DAT050');
 INSERT INTO Limited_courses (max_nr_studs, course_code) VALUES ('150','MVE415');
 	
 --__________________________________________________
+
+
+INSERT INTO Branches (name, programe_Name) VALUES ('Computer Languages','Computer Engineering');
+INSERT INTO Branches (name, programe_Name) VALUES ('Interaction Design','Computer Engineering');
+INSERT INTO Branches (name, programe_Name) VALUES ('Software Engineering','Computer Engineering');
+INSERT INTO Branches (name, programe_Name) VALUES ('Energy','Marine Engineering');
+INSERT INTO Branches (name, programe_Name) VALUES ('Materials','Machine Engineering');
+
+--______________________________________________________
+
+
+INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('shahadt','Datateknik','960413','Shahad Tomasson');
+INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('espinod','Datateknik','930909','Espino Dante');
+INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('betr','Datateknik','950303','Beti Ramone');
+INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('cocob','Maskinteknik','950616','Coco Bertsson');
+INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('joseg','Elektroteknik','960606','Jose Gunarson');
+INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('isbele','Mekatronik','930101','Isbel Erve');
+
+
+--______________________________________________________________________
+
