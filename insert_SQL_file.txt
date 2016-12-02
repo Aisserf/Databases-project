@@ -108,12 +108,29 @@ INSERT INTO Recommened_Course_Branch (code, Branch_name, Branch_program) VALUES(
 
 --_________________________________________________________________________________
 
-INSERT INTO WaitingList(id, code, position) VALUES('Isbele','TDA357','6');
-INSERT INTO WaitingList(id, code, position) VALUES('joseg','DAT050','1');
-INSERT INTO WaitingList(id, code, position) VALUES('Espinod','MVE415','8');
+INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('DAT050','Computer Languages','Machine Engineering');
+INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('LET625','Interaction Design','Industrial Economy and Production');
+INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('MVE415','Software ENgineering','Computer Engineering');
+INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('LEU500','Energy','Electrical Engineering');
+INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('TDA357','Materials','Marine Engineering');
+
+--___________________________________________________________________________
+
+INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('shahadt','Computer Languages','Computer Engineering');
+INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('espinod','Interaction Design','Computer Engineering');
+INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('betr','Software Engineering','Computer Engineering');
+INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('cocob','Energy','Marine Engineering');
+INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('joseg','Materials','Machine Engineering');
+
+
+--________________________________________________________________________________
+
+INSERT INTO Waiting_List(id, code, position) VALUES('isbele','TDA357','6');
+INSERT INTO Waiting_List(id, code, position) VALUES('joseg','DAT050','1');
+INSERT INTO Waiting_List(id, code, position) VALUES('espinod','MVE415','8');
 
 --_____________________________________________________________________________
 
-INSERT INTO hosting_Deptarment (dept_abbreviation, programme_name) VALUES ('CS','Computer Engineering');
-INSERT INTO hosting_Deptarment (dept_abbreviation, programme_name) VALUES ('IT','Industrial Economy and Production');
-INSERT INTO hosting_Deptarment (dept_abbreviation, programme_name) VALUES ('MS','Machine Engineering');
+INSERT INTO hosting_Deptarment (dept_abbreviation, program_name) VALUES ('CS','Computer Engineering');
+INSERT INTO hosting_Deptarment (dept_abbreviation, program_name) VALUES ('IT','Industrial Economy and Production');
+INSERT INTO hosting_Deptarment (dept_abbreviation, program_name) VALUES ('MS','Machine Engineering');
