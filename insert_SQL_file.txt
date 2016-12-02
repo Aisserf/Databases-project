@@ -82,3 +82,11 @@ INSERT INTO Mandatory_Course_Program (code, name) VALUES ('LET625','Industrial E
 
 --______________________________________________________________________
 
+INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('TDA357','shahadt');
+INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('TDA357','espinod');
+INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('TDA357','betr');
+INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('TDA357','cocob');
+INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('LEU482','joseg');
+INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('LEU482','isbele');
+
+--______________________________________________________________________
