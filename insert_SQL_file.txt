@@ -32,3 +32,9 @@ INSERT INTO Classification(name) VALUES	('seminar course');
 INSERT INTO Classification(name) VALUES	('mathematical course');
 
 --_____________________________________________________________
+
+INSERT INTO Limited_courses (max_nr_studs, course_code) VALUES ('200','TDA357');	
+INSERT INTO Limited_courses (max_nr_studs, course_code) VALUES ('400','DAT050');
+INSERT INTO Limited_courses (max_nr_studs, course_code) VALUES ('150','MVE415');
+	
+--__________________________________________________
