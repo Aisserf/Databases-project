@@ -111,3 +111,13 @@ CREATE TABLE MandatoryCourseBranch(
   PRIMARY KEY(code,BranchName,BranchProgramme)
 );
 --________________________
+
+CREATE TABLE ChoosesBranch(
+  id  TEXT ,
+  branch TEXT,
+  programme TEXT,
+  PRIMARY KEY(id),
+  FOREIGN KEY(id) REFERENCES Students(Stud_Id),
+  FOREIGN KEY(programme, branch) REFERENCES branches(programe_name, name)
+);
+--_________________________________________________________
