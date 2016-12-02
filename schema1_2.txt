@@ -1,0 +1,68 @@
+Courses (_code_, credits, name, abbreviation)
+	Abbreviations --> Department.abbreviations
+
+Classification(_name_)
+
+Department (_abbreviations_, name)
+	name unique
+
+Programme (_name_, abbreviation)
+
+limitedCourse(#MaxStud, code)
+	code --> Course.code
+
+Student(_studID_, ProgramName, personal#, credits, name)
+	personal# unique
+	ProgramName --> Programme.name
+
+Branch (_name_, programmeName)
+	programmeName --> Programme.name
+
+
+
+has(_name_, _code_)
+	name --> classification.name
+	code --> Course.code
+
+requires(_code_, _requires_)
+	code --> Course.code
+	requires --> Course.code
+
+
+programmeHasMandatoryCourse(_code_, _name_)
+	code --> Course.code
+	name --> Programme.name
+
+
+registerTo(_code_, _ID_)
+	code --> Course.code
+	ID --> Student.ID
+
+finishes(_code_, _ID_, grade)
+	code --> Course.code
+	ID -> Student.ID
+
+Recommended(_code_, _branchName_, _branchProgramme_)
+	code --> Course.code
+	(branchName, branchProgramme) --> Branch.(name, programme)
+
+HasMandatory(_code_, _branchName_, _branchProgramme_)
+	code --> Course.code
+	(branchName, branchProgramme) --> Branch.(name, programme)
+
+chooses(_ID_, branchName, branchProgramme)
+	(branchName, branchProgramme) --> Branch.(name, programme)
+	ID  --> Student.ID
+
+
+WaitsFor(_ID_, _courseCode_, postition)
+	(courseCode, position) unique
+	ID --> Student.ID
+	courseCode --> limitiedCourse.code
+	
+
+host(_abbreviations_, _name_)
+	abbrevations --> Department.abbreviations
+	name --> Programme.name
+
+
