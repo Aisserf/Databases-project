@@ -72,3 +72,13 @@ INSERT INTO Requires (code, requires) VALUES ('TDA357','DAT050');
 INSERT INTO Requires (code, requires) VALUES ('LEU500','MVE415');
 
 --_________________________________________________________________________
+
+
+INSERT INTO Mandatory_Course_Program (course_code, programme_name) VALUES ('TDA357','Computer Engineering');
+INSERT INTO Mandatory_Course_Program (course_code, name) VALUES ('LMT211','Machine Engineering');
+INSERT INTO Mandatory_Course_Program (course_code, name) VALUES ('LEU482','Electrical Engineering');
+INSERT INTO Mandatory_Course_Program (course_code, name) VALUES ('DAT050','Marine Engineering');
+INSERT INTO Mandatory_Course_Program (code, name) VALUES ('LET625','Industrial Economy and Production');
+
+--______________________________________________________________________
+
