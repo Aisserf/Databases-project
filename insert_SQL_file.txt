@@ -59,3 +59,16 @@ INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('isbele','Mekatroni
 
 --______________________________________________________________________
 
+INSERT INTO Has_Classification(name, code) VALUES ('mathematical course','TDA357');
+INSERT INTO Has_Classification(name, code) VALUES ('research course','DAT050');
+INSERT INTO Has_Classification(name, code) VALUES ('seminar course','LET625');
+INSERT INTO Has_Classification(name, code) VALUES ('research course','LEU482');
+INSERT INTO Has_Classification(name, code) VALUES ('mathematical course','LEU500');
+INSERT INTO Has_Classification(name, code) VALUES ('seminar course','MVE415');
+
+--________________________________________________________________________
+
+INSERT INTO Requires (code, requires) VALUES ('TDA357','DAT050');
+INSERT INTO Requires (code, requires) VALUES ('LEU500','MVE415');
+
+--_________________________________________________________________________
