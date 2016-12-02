@@ -46,6 +46,17 @@ CREATE TABLE Branches (
 	PRIMARY KEY (name, programe_Name)
 );
 
+--_________________________________________________
+
+CREATE TABLE Students(
+	stud_Id	TEXT	NOT NULL,
+	programme	TEXT	NOT NULL,
+	ssn	VARCHAR(6) NOT NULL UNIQUE,
+	name	TEXT	NOT NULL,
+	PRIMARY KEY (stud_Id)
+);
+
+
 ______________________________________________________
 
 CREATE TABLE Has_CLassification(
