@@ -121,3 +121,10 @@ CREATE TABLE ChoosesBranch(
   FOREIGN KEY(programme, branch) REFERENCES branches(programe_name, name)
 );
 --_________________________________________________________
+CREATE TABLE WaitingList(
+  id TEXT  REFERENCES Students(stud_id),
+  code char(6)  REFERENCES Limited_Courses(course_code),
+  position INT UNIQUE,
+  PRIMARY KEY(id, code)
+);
+--________________________________________________________
