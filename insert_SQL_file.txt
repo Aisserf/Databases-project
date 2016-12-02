@@ -113,3 +113,7 @@ INSERT INTO WaitingList(id, code, position) VALUES('joseg','DAT050','1');
 INSERT INTO WaitingList(id, code, position) VALUES('Espinod','MVE415','8');
 
 --_____________________________________________________________________________
+
+INSERT INTO hosting_Deptarment (dept_abbreviation, programme_name) VALUES ('CS','Computer Engineering');
+INSERT INTO hosting_Deptarment (dept_abbreviation, programme_name) VALUES ('IT','Industrial Economy and Production');
+INSERT INTO hosting_Deptarment (dept_abbreviation, programme_name) VALUES ('MS','Machine Engineering');
