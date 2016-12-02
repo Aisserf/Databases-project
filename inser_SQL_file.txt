@@ -1,0 +1,29 @@
+
+INSERT INTO Departments(abbreviation, name) VALUES ('CS','Computer Science');
+INSERT INTO Departments(abbreviation, name) VALUES ('IT','Information Technology');
+INSERT INTO Departments(abbreviation, name) VALUES ('MS','Mathematical Sciences');
+
+--______________________________________________________________
+
+
+INSERT INTO Programmes (name, abbreviation) VALUES ('Computer Engineering','CE');
+INSERT INTO Programmes (name, abbreviation) VALUES ('Electrical Engineering','EE');
+INSERT INTO Programmes (name, abbreviation) VALUES ('Industrial Economy and Production','IEP');
+INSERT INTO Programmes (name, abbreviation) VALUES ('Marine Engineering','ME');
+INSERT INTO Programmes (name, abbreviation) VALUES ('Machine Engineering','MCE');
+
+
+--______________________________________________________________
+
+
+INSERT INTO Courses (name, code, credits, abbreviation) VALUES ('Databases','TDA357',10, 'CS');
+INSERT INTO Courses (name, code, credits, abbreviation) VALUES ('Object oriented Programming','DAT050',10, 'CS');
+INSERT INTO Courses (name, code, credits, abbreviation) VALUES ('Real time Systems','LET625',5, 'CS');
+INSERT INTO Courses (name, code, credits, abbreviation) VALUES ('Programming','LEU482',10, 'CS');
+INSERT INTO Courses (name, code, credits, abbreviation) VALUES ('Machine oriented Programming','LEU500',10, 'IT');
+INSERT INTO Courses (name, code, credits, abbreviation) VALUES ('Mathematical analysis','MVE415',5, 'MS');
+INSERT INTO Courses (name, code, credits, abbreviation) VALUES ('Linear Algebra','LMT211',10, 'MS');
+
+--______________________________________________________
+
+
