@@ -6,11 +6,11 @@ INSERT INTO Departments(abbreviation, name) VALUES ('MS','Mathematical Sciences'
 --______________________________________________________________
 
 
-INSERT INTO Programmes (name, abbreviation) VALUES ('Computer Engineering','CE');
-INSERT INTO Programmes (name, abbreviation) VALUES ('Electrical Engineering','EE');
-INSERT INTO Programmes (name, abbreviation) VALUES ('Industrial Economy and Production','IEP');
-INSERT INTO Programmes (name, abbreviation) VALUES ('Marine Engineering','ME');
-INSERT INTO Programmes (name, abbreviation) VALUES ('Machine Engineering','MCE');
+INSERT INTO Programs (name, abbreviation) VALUES ('Computer Engineering','CE');
+INSERT INTO Programs (name, abbreviation) VALUES ('Electrical Engineering','EE');
+INSERT INTO Programs (name, abbreviation) VALUES ('Industrial Economy and Production','IEP');
+INSERT INTO Programs (name, abbreviation) VALUES ('Marine Engineering','ME');
+INSERT INTO Programs (name, abbreviation) VALUES ('Machine Engineering','MCE');
 
 
 --______________________________________________________________
@@ -40,21 +40,21 @@ INSERT INTO Limited_courses (max_nr_studs, course_code) VALUES ('150','MVE415');
 --__________________________________________________
 
 
-INSERT INTO Branches (name, programe_Name) VALUES ('Computer Languages','Computer Engineering');
-INSERT INTO Branches (name, programe_Name) VALUES ('Interaction Design','Computer Engineering');
-INSERT INTO Branches (name, programe_Name) VALUES ('Software Engineering','Computer Engineering');
-INSERT INTO Branches (name, programe_Name) VALUES ('Energy','Marine Engineering');
-INSERT INTO Branches (name, programe_Name) VALUES ('Materials','Machine Engineering');
+INSERT INTO Branches (name, program_Name) VALUES ('Computer Languages','Computer Engineering');
+INSERT INTO Branches (name, program_Name) VALUES ('Interaction Design','Computer Engineering');
+INSERT INTO Branches (name, program_Name) VALUES ('Software Engineering','Computer Engineering');
+INSERT INTO Branches (name, program_Name) VALUES ('Energy','Marine Engineering');
+INSERT INTO Branches (name, program_Name) VALUES ('Materials','Machine Engineering');
 
 --______________________________________________________
 
 
-INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('shahadt','Datateknik','960413','Shahad Tomasson');
-INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('espinod','Datateknik','930909','Espino Dante');
-INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('betr','Datateknik','950303','Beti Ramone');
-INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('cocob','Maskinteknik','950616','Coco Bertsson');
-INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('joseg','Elektroteknik','960606','Jose Gunarson');
-INSERT INTO Students (stud_Id, programme, ssn, name) VALUES ('isbele','Mekatronik','930101','Isbel Erve');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('shahadt','Datateknik','960413','Shahad Tomasson');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('espinod','Datateknik','930909','Espino Dante');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('betr','Datateknik','950303','Beti Ramone');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('cocob','Maskinteknik','950616','Coco Bertsson');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('joseg','Elektroteknik','960606','Jose Gunarson');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('isbele','Mekatronik','930101','Isbel Erve');
 
 
 --______________________________________________________________________
@@ -74,11 +74,11 @@ INSERT INTO Requires (code, requires) VALUES ('LEU500','MVE415');
 --_________________________________________________________________________
 
 
-INSERT INTO Mandatory_Course_Program (course_code, programme_name) VALUES ('TDA357','Computer Engineering');
-INSERT INTO Mandatory_Course_Program (course_code, name) VALUES ('LMT211','Machine Engineering');
-INSERT INTO Mandatory_Course_Program (course_code, name) VALUES ('LEU482','Electrical Engineering');
-INSERT INTO Mandatory_Course_Program (course_code, name) VALUES ('DAT050','Marine Engineering');
-INSERT INTO Mandatory_Course_Program (code, name) VALUES ('LET625','Industrial Economy and Production');
+INSERT INTO Mandatory_Course_Program (course_code, program_name) VALUES ('TDA357','Computer Engineering');
+INSERT INTO Mandatory_Course_Program (course_code, program_name) VALUES ('LMT211','Machine Engineering');
+INSERT INTO Mandatory_Course_Program (course_code, program_name) VALUES ('LEU482','Electrical Engineering');
+INSERT INTO Mandatory_Course_Program (course_code, program_name) VALUES ('DAT050','Marine Engineering');
+INSERT INTO Mandatory_Course_Program (course_code, program_name) VALUES ('LET625','Industrial Economy and Production');
 
 --______________________________________________________________________
 
@@ -100,11 +100,11 @@ INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('TDA357','isbel
 
 --______________________________________________________________________
 
-INSERT INTO(id, branch, programme) VALUES('shahadt','Computer Languages','Computer Engineering');
-INSERT INTO(id, branch, programme) VALUES('espinod','Interaction Design','Computer Engineering');
-INSERT INTO(id, branch, programme) VALUES('betr','Software Engineering','Computer Engineering');
-INSERT INTO(id, branch, programme) VALUES('cocob','Energy','Marine Engineering');
-INSERT INTO(id, branch, programme) VALUES('joseg','Materials','Machine Engineering');
+INSERT INTO Recommened_Course_Branch (code, Branch_name, Branch_program) VALUES('TDA357','Computer Languages','Computer Engineering');
+INSERT INTO Recommened_Course_Branch (code, Branch_name, Branch_program) VALUES('LEU500','Interaction Design','Computer Engineering');
+INSERT INTO Recommened_Course_Branch (code, Branch_name, Branch_program) VALUES('TDA357','Software Engineering','Computer Engineering');
+INSERT INTO Recommened_Course_Branch (code, Branch_name, Branch_program) VALUES('LMT211','Energy','Marine Engineering');
+INSERT INTO Recommened_Course_Branch (code, Branch_name, Branch_program) VALUES('MVE415','Materials','Machine Engineering');
 
 --_________________________________________________________________________________
 
