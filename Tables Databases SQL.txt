@@ -128,3 +128,9 @@ CREATE TABLE WaitingList(
   PRIMARY KEY(id, code)
 );
 --________________________________________________________
+
+CREATE TABLE hosting_Deptarment(
+  dept_abbreviation  TEXT REFERENCES Departments(abbreviation) NOT NULL,
+  programme_name    TEXT REFERENCES Programmes(name) NOT NULL,
+  PRIMARY KEY (dept_abbreviation, programme_name)
+);
