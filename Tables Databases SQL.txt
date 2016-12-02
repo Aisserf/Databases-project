@@ -58,7 +58,7 @@ CREATE TABLE Students(
 
 CREATE TABLE Has_CLassification(
 
-name  TEXT  REFERENCES  Classification(name) NOT NULL,
+name  TEXT  REFERENCES  Classifications(name) NOT NULL,
 code  CHAR(6)  REFERENCES  Courses(code) NOT NULL PRIMARY KEY  
 );
 
