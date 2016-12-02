@@ -1,0 +1,11 @@
+CREATE TABLE Courses ( 
+  name TEXT NOT NULL, code CHAR(6), 
+  credits INTEGER, 
+  abbreviation TEXT NOT NULL, 
+  FOREIGN KEY(abbreviation) REFERENCES departments(abbreviation), 
+  PRIMARY KEY (code) 
+  );
+  
+CREATE TABLE Classification ( 
+  name TEXT NOT NULL PRIMARY KEY 
+  );
