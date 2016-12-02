@@ -5,7 +5,7 @@ CREATE TABLE Departments(
 );
 --______________________________
 
-CREATE TABLE Programmes (
+CREATE TABLE Programs (
   name    TEXT  NOT NULL,
   abbreviation  CHAR(5) NOT NULL,
   PRIMARY KEY (name)
@@ -24,7 +24,7 @@ CREATE TABLE Courses (
 
 --_________________________________
 
-CREATE TABLE Classification (
+CREATE TABLE Classifications (
   name  TEXT  NOT NULL PRIMARY KEY
 );
 
@@ -40,14 +40,14 @@ CREATE TABLE Limited_courses(
 
 CREATE TABLE Branches (
   name    TEXT  NOT NULL unique,
-  programe_Name  TEXT  REFERENCES Programmes (name) NOT NULL,
-  PRIMARY KEY (name, programe_Name)
+  program_Name  TEXT  REFERENCES Programs (name) NOT NULL,
+  PRIMARY KEY (name, program_Name)
 );
 
 --______________________________________________________
 CREATE TABLE Students(
   stud_Id  TEXT  NOT NULL,
-  programme  TEXT  NOT NULL,
+  program  TEXT  NOT NULL,
   ssn  VARCHAR(6) NOT NULL UNIQUE,
   name  TEXT  NOT NULL,
   PRIMARY KEY (stud_Id)
@@ -74,8 +74,8 @@ CREATE TABLE Requires (
 
 CREATE TABLE Mandatory_Course_Program(
   course_code  char(6)  REFERENCES Courses(code) NOT NULL,  
-  programme_name  TEXT  REFERENCES Programmes(name) NOT NULL,
-  PRIMARY KEY(course_code, programme_name)
+  program_name  TEXT  REFERENCES Programs(name) NOT NULL,
+  PRIMARY KEY(course_code, program_name)
 );
 
 --________________________________________________________________
@@ -89,39 +89,39 @@ CREATE TABLE Students_Registered_To_Course (
 --______________________________________________________
 
 CREATE TABLE Finished_Courses(
-   course_code   char(6)  REFERENCES Courses(code) ,
+  course_code   char(6)  REFERENCES Courses(code) ,
   stud_id   TEXT  REFERENCES Students(stud_Id) ,
-   grade     CHAR(4) NOT NULL,
+  grade     CHAR(4) NOT NULL,
   PRIMARY KEY(course_code, stud_id)
 );
 --__________________________________________________________________________
 
 CREATE TABLE Recommended_Course_Branch(
   code char(6) REFERENCES Courses(code) ,
-  Branch_name TEXT REFERENCES branches(name),
-  Branch_Programme TEXT REFERENCES Programmes(name),
-  PRIMARY KEY(code, Branch_name, Branch_Programme)
+  Branch_name TEXT REFERENCES Branches(name),
+  Branch_Program TEXT REFERENCES Programs(name),
+  PRIMARY KEY(code, Branch_name, Branch_Program)
   );
 --_____________________________________________________________________
 
-CREATE TABLE MandatoryCourseBranch(
+CREATE TABLE Mandatory_Course_Branch(
   code char(6) REFERENCES Courses(code),
   BranchName  TEXT REFERENCES  Branches(name),
-  BranchProgramme  TEXT REFERENCES Programmes(name),
-  PRIMARY KEY(code,BranchName,BranchProgramme)
+  BranchProgram  TEXT REFERENCES Programs(name),
+  PRIMARY KEY(code,BranchName,BranchProgram)
 );
 --________________________
 
-CREATE TABLE ChoosesBranch(
+CREATE TABLE Stud_Chooses_Branch(
   id  TEXT ,
   branch TEXT,
-  programme TEXT,
+  program TEXT,
   PRIMARY KEY(id),
   FOREIGN KEY(id) REFERENCES Students(Stud_Id),
-  FOREIGN KEY(programme, branch) REFERENCES branches(programe_name, name)
+  FOREIGN KEY(program, branch) REFERENCES Branches(program_name, name)
 );
 --_________________________________________________________
-CREATE TABLE WaitingList(
+CREATE TABLE Waiting_List(
   id TEXT  REFERENCES Students(stud_id),
   code char(6)  REFERENCES Limited_Courses(course_code),
   position INT UNIQUE,
@@ -131,6 +131,6 @@ CREATE TABLE WaitingList(
 
 CREATE TABLE hosting_Deptarment(
   dept_abbreviation  TEXT REFERENCES Departments(abbreviation) NOT NULL,
-  programme_name    TEXT REFERENCES Programmes(name) NOT NULL,
-  PRIMARY KEY (dept_abbreviation, programme_name)
+  program_name    TEXT REFERENCES Programs(name) NOT NULL,
+  PRIMARY KEY (dept_abbreviation, program_name)
 );
