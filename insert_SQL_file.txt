@@ -27,9 +27,9 @@ INSERT INTO Courses (name, code, credits, abbreviation) VALUES ('Linear Algebra'
 --______________________________________________________
 
 
-INSERT INTO Classification(name) VALUES	('research course');
-INSERT INTO Classification(name) VALUES	('seminar course');
-INSERT INTO Classification(name) VALUES	('mathematical course');
+INSERT INTO Classifications(name) VALUES	('research course');
+INSERT INTO Classifications(name) VALUES	('seminar course');
+INSERT INTO Classificatiosn(name) VALUES	('mathematical course');
 
 --_____________________________________________________________
 
@@ -100,17 +100,17 @@ INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('TDA357','isbel
 
 --______________________________________________________________________
 
-INSERT INTO Recommened_Course_Branch (code, Branch_name, Branch_program) VALUES('TDA357','Computer Languages','Computer Engineering');
-INSERT INTO Recommened_Course_Branch (code, Branch_name, Branch_program) VALUES('LEU500','Interaction Design','Computer Engineering');
-INSERT INTO Recommened_Course_Branch (code, Branch_name, Branch_program) VALUES('TDA357','Software Engineering','Computer Engineering');
-INSERT INTO Recommened_Course_Branch (code, Branch_name, Branch_program) VALUES('LMT211','Energy','Marine Engineering');
-INSERT INTO Recommened_Course_Branch (code, Branch_name, Branch_program) VALUES('MVE415','Materials','Machine Engineering');
+INSERT INTO Recommended_Course_Branch (code, Branch_name, Branch_program) VALUES('TDA357','Computer Languages','Computer Engineering');
+INSERT INTO Recommended_Course_Branch (code, Branch_name, Branch_program) VALUES('LEU500','Interaction Design','Computer Engineering');
+INSERT INTO Recommended_Course_Branch (code, Branch_name, Branch_program) VALUES('TDA357','Software Engineering','Computer Engineering');
+INSERT INTO Recommended_Course_Branch (code, Branch_name, Branch_program) VALUES('LMT211','Energy','Marine Engineering');
+INSERT INTO Recommended_Course_Branch (code, Branch_name, Branch_program) VALUES('MVE415','Materials','Machine Engineering');
 
 --_________________________________________________________________________________
 
 INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('DAT050','Computer Languages','Machine Engineering');
 INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('LET625','Interaction Design','Industrial Economy and Production');
-INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('MVE415','Software ENgineering','Computer Engineering');
+INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('MVE415','Software Engineering','Computer Engineering');
 INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('LEU500','Energy','Electrical Engineering');
 INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('TDA357','Materials','Marine Engineering');
 
