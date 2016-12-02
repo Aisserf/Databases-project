@@ -63,3 +63,11 @@ CREATE TABLE Requires (
 );
 
 ________________________________________________________
+
+CREATE TABLE Mandatory_Course_Program(
+	course_code	char(6)	REFERENCES Courses(code) NOT NULL,	
+	programme_name	TEXT	REFERENCES Programme(name) NOT NULL,
+	PRIMARY KEY(course_code, programme_name) 
+);
+
+________________________________________________________________
