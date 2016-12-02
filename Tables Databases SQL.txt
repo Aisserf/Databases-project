@@ -40,3 +40,11 @@ CREATE TABLE Limited_courses(
 
 _______________________________________________
 
+
+CREATE TABLE Branches (
+	name		TEXT	NOT NULL unique,
+	programe_Name	TEXT	REFERENCES Programmes (name) NOT NULL,
+	PRIMARY KEY (name, programe_Name)
+);
+
+
