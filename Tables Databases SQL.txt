@@ -1,0 +1,42 @@
+
+CREATE TABLE Courses (
+  name  TEXT  NOT NULL,
+  code  CHAR(6) NOT NULL,
+  credits  INTEGER NOY NULL,
+  abbreviation TEXT NOT NULL,
+  FOREIGN KEY(abbreviation) REFERENCES departments(abbreviation),
+  PRIMARY KEY (code)
+);
+
+_________________________________
+
+CREATE TABLE Classification (
+	name	TEXT	NOT NULL PRIMARY KEY
+);
+
+________________________________________________________
+
+CREATE TABLE Departments(
+	abbreviation	TEXT  NOT NULL,
+	name		TEXT NOT NULL UNIQUE,
+	PRIMARY KEY (abbreviation)
+);
+
+____________________________________________________
+
+CREATE TABLE Programmes (
+	name		TEXT	NOT NULL,
+	abbreviation	CHAR(5) NOT NULL,
+	PRIMARY KEY (name)
+);
+
+________________________________________________
+
+CREATE TABLE Limited_courses(
+	max_nr_studs	INTEGER,
+	course_code	CHAR(6) REFERENCES Courses(code),
+	PRIMARY KEY (course_code)
+);
+
+_______________________________________________
+
