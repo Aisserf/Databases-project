@@ -124,7 +124,7 @@ CREATE TABLE Stud_Chooses_Branch(
 CREATE TABLE Waiting_List(
   id TEXT  REFERENCES Students(stud_id),
   code char(6)  REFERENCES Limited_Courses(course_code),
-  position INT UNIQUE,
+  position INT UNIQUE NOT NULL,
   PRIMARY KEY(id, code)
 );
 --________________________________________________________
