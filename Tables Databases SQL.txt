@@ -71,3 +71,12 @@ CREATE TABLE Mandatory_Course_Program(
 );
 
 ________________________________________________________________
+
+
+CREATE TABLE Students_Registered_To_Course (
+  course_code	CHAR(6) REFERENCES Courses (code),
+  stud_Id	TEXT REFERENCES Students(stud_Id) NOT NULL,
+  PRIMARY KEY (stud_Id, course_code)
+);
+
+_____________________________________________________________________________
