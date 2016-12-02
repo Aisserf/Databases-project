@@ -103,3 +103,11 @@ CREATE TABLE Recommended_Course_Branch(
   PRIMARY KEY(code, Branch_name, Branch_Programme)
   );
 --_____________________________________________________________________
+
+CREATE TABLE MandatoryCourseBranch(
+  code char(6) REFERENCES Courses(code),
+  BranchName  TEXT REFERENCES  Branches(name),
+  BranchProgramme  TEXT REFERENCES Programmes(name),
+  PRIMARY KEY(code,BranchName,BranchProgramme)
+);
+--________________________
