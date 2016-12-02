@@ -87,3 +87,12 @@ CREATE TABLE Finished_Courses(
   PRIMARY KEY(course_code, stud_id)
 );
 _____________________________________________________________________________
+
+CREATE TABLE Recommended_Course_Branch(
+  code char(6) REFERENCES Courses(code) ,
+  Branch_name TEXT REFERENCES branches(name),
+  Branch_programme TEXT REFERENCES branches(programe_name),
+  PRIMARY KEY(code, Branch_name, Branch_programme)
+  );
+  
+  ________________________________________________________________________
