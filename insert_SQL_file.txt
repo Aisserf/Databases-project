@@ -90,3 +90,26 @@ INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('LEU482
 INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('LEU482','isbele');
 
 --______________________________________________________________________
+
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('TDA357','shahadt','5');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('DAT050','espinod','5');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LET625','betr','3');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('DAT050','cocob','3');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LET625','joseg','4');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('TDA357','isbele','5');
+
+--______________________________________________________________________
+
+INSERT INTO(id, branch, programme) VALUES('shahadt','Computer Languages','Computer Engineering');
+INSERT INTO(id, branch, programme) VALUES('espinod','Interaction Design','Computer Engineering');
+INSERT INTO(id, branch, programme) VALUES('betr','Software Engineering','Computer Engineering');
+INSERT INTO(id, branch, programme) VALUES('cocob','Energy','Marine Engineering');
+INSERT INTO(id, branch, programme) VALUES('joseg','Materials','Machine Engineering');
+
+--_________________________________________________________________________________
+
+INSERT INTO WaitingList(id, code, position) VALUES('Isbele','TDA357','6');
+INSERT INTO WaitingList(id, code, position) VALUES('joseg','DAT050','1');
+INSERT INTO WaitingList(id, code, position) VALUES('Espinod','MVE415','8');
+
+--_____________________________________________________________________________
