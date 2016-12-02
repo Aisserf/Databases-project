@@ -56,3 +56,10 @@ code	CHAR(6)	REFERENCES	Courses(code) NOT NULL PRIMARY KEY
 
 __________________________________________________
 
+CREATE TABLE Requires (
+	code	char(6)	REFERENCES Courses(code),	
+	requires CHAR(6)REFERENCES Courses(code),
+	PRIMARY KEY (code, requires)
+);
+
+________________________________________________________
