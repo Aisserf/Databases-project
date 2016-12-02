@@ -27,3 +27,8 @@ INSERT INTO Courses (name, code, credits, abbreviation) VALUES ('Linear Algebra'
 --______________________________________________________
 
 
+INSERT INTO Classification(name) VALUES	('research course');
+INSERT INTO Classification(name) VALUES	('seminar course');
+INSERT INTO Classification(name) VALUES	('mathematical course');
+
+--_____________________________________________________________
