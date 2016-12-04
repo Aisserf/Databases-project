@@ -49,12 +49,12 @@ INSERT INTO Branches (name, program_Name) VALUES ('Materials','Machine Engineeri
 --______________________________________________________
 
 
-INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('shahadt','Datateknik','960413','Shahad Tomasson');
-INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('espinod','Datateknik','930909','Espino Dante');
-INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('betr','Datateknik','950303','Beti Ramone');
-INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('cocob','Maskinteknik','950616','Coco Bertsson');
-INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('joseg','Elektroteknik','960606','Jose Gunarson');
-INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('isbele','Mekatronik','930101','Isbel Erve');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('shahadt','Computer Engineering','960413','Shahad Tomasson');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('espinod','Computer Engineering','930909','Espino Dante');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('betr','Computer Engineering','950303','Beti Ramone');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('cocob','Machine Engineering','950616','Coco Bertsson');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('joseg','Electrical Engineering','960606','Jose Gunarson');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('isbele','Industrial Economy and Production','930101','Isbel Erve');
 
 
 --______________________________________________________________________
