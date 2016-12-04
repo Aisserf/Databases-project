@@ -41,8 +41,8 @@ INSERT INTO Limited_courses (max_nr_studs, course_code) VALUES ('150','MVE415');
 
 
 INSERT INTO Branches (name, program_Name) VALUES ('Computer Languages','Computer Engineering');
-INSERT INTO Branches (name, program_Name) VALUES ('Interaction Design','Computer Engineering');
-INSERT INTO Branches (name, program_Name) VALUES ('Software Engineering','Computer Engineering');
+INSERT INTO Branches (name, program_Name) VALUES ('Interaction Design','Industrial Economy and Production');
+INSERT INTO Branches (name, program_Name) VALUES ('Software Engineering','Electrical Engineering');
 INSERT INTO Branches (name, program_Name) VALUES ('Energy','Marine Engineering');
 INSERT INTO Branches (name, program_Name) VALUES ('Materials','Machine Engineering');
 
@@ -50,9 +50,9 @@ INSERT INTO Branches (name, program_Name) VALUES ('Materials','Machine Engineeri
 
 
 INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('shahadt','Computer Engineering','960413','Shahad Tomasson');
-INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('espinod','Computer Engineering','930909','Espino Dante');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('espinod','Industrial Economy and Production','930909','Espino Dante');
 INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('betr','Computer Engineering','950303','Beti Ramone');
-INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('cocob','Machine Engineering','950616','Coco Bertsson');
+INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('cocob','Marine Engineering','950616','Coco Bertsson');
 INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('joseg','Electrical Engineering','960606','Jose Gunarson');
 INSERT INTO Students (stud_Id, program, ssn, name) VALUES ('isbele','Industrial Economy and Production','930101','Isbel Erve');
 
@@ -83,11 +83,11 @@ INSERT INTO Mandatory_Course_Program (course_code, program_name) VALUES ('LET625
 --______________________________________________________________________
 
 INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('TDA357','shahadt');
-INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('TDA357','espinod');
+INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('LET625','espinod');
 INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('TDA357','betr');
-INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('TDA357','cocob');
+INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('DAT050','cocob');
 INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('LEU482','joseg');
-INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('LEU482','isbele');
+INSERT INTO Students_Registered_To_Course (course_code, stud_Id) VALUES ('LET625','isbele');
 
 --______________________________________________________________________
 
@@ -111,16 +111,16 @@ INSERT INTO Recommended_Course_Branch (code, Branch_name, Branch_program) VALUES
 INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('DAT050','Computer Languages','Machine Engineering');
 INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('LET625','Interaction Design','Industrial Economy and Production');
 INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('MVE415','Software Engineering','Computer Engineering');
-INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('LEU500','Energy','Electrical Engineering');
-INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('TDA357','Materials','Marine Engineering');
+INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('LEU500','Energy','Marine Engineering');
+INSERT INTO Mandatory_Course_Branch (code,BranchName, BranchProgram) VALUES('TDA357','Materials','Machine Engineering');
 
 --___________________________________________________________________________
 
 INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('shahadt','Computer Languages','Computer Engineering');
-INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('espinod','Interaction Design','Computer Engineering');
-INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('betr','Software Engineering','Computer Engineering');
+INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('espinod','Interaction Design','Industrial Economy and Production');
+INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('betr','Computer Languages','Computer Engineering');
 INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('cocob','Energy','Marine Engineering');
-INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('joseg','Materials','Machine Engineering');
+INSERT INTO Stud_Chooses_Branch (id, branch, program) VALUES('joseg','Software Engineering','Electrical Engineering');
 
 
 --________________________________________________________________________________
