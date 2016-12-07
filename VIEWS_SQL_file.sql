@@ -62,8 +62,6 @@ from students
 join mandatory_course_branch 
 on stud_chooses_branch.branch_name = mandatory_course_branch AND stud_choosees_branch.branch_name NOT IN (select stud_id, course_code from PassedCourses);
 
-EXCEPT stud_id, course_code
-from PassedCourses;
 
 -------------------------------------------------------------------------------
 
