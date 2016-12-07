@@ -58,7 +58,7 @@ join mandatory_course_program
 on students.prog_name = mandatory_course_program.prog_name
 UNION
 select stud_id, course_code 
-from students 
+from stud_chooses_branch    --(Sepil's suggestion, tidigare "FROM Student")
 join mandatory_course_branch 
 on stud_chooses_branch.branch_name = mandatory_course_branch AND stud_choosees_branch.branch_name NOT IN (select stud_id, course_code from PassedCourses);
 
