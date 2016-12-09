@@ -107,9 +107,9 @@ INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALU
 
 --_________________________________________________________________________________
 
-INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES('DAT050','Computer Languages','Machine Engineering');
+INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES('DAT050','Computer Languages','Computer Engineering');
 INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES('LET625','Interaction Design','Industrial Economy and Production');
-INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES('MVE415','Software Engineering','Computer Engineering');
+INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES('MVE415','Software Engineering','Electrical Engineering');
 INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES('LEU500','Energy','Marine Engineering');
 INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES('TDA357','Materials','Machine Engineering');
 
