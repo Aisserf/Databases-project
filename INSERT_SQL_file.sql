@@ -87,6 +87,9 @@ INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('TDA357
 INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('DAT050','cocob');
 INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('LEU482','joseg');
 INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('LET625','isbele');
+INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('DAT050','shahadt');
+INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('LEU500','cocob');
+INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('MVE415','joseg');
 
 --______________________________________________________________________
 
