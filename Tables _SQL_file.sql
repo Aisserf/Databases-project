@@ -70,7 +70,8 @@ CREATE TABLE Students(
   prog_name  TEXT  NOT NULL,
   ssn  VARCHAR(6) NOT NULL UNIQUE,
   stud_name  TEXT  NOT NULL,
-    PRIMARY KEY (stud_id)
+    PRIMARY KEY (stud_id),
+  UNIQUE(stud_id, prog_name)
 );
 --______________________________________________________
 
@@ -134,7 +135,7 @@ CREATE TABLE Stud_Chooses_Branch(
   branch_name TEXT,
   prog_name TEXT,
   PRIMARY KEY(stud_id),
-  FOREIGN KEY(stud_id) REFERENCES Students(stud_id),
+  FOREIGN KEY(stud_id, prog_name) REFERENCES Students(stud_id, prog_name),
   FOREIGN KEY(prog_name, branch_name) REFERENCES Branches(prog_name, branch_name)
 );
 --_________________________________________________________
