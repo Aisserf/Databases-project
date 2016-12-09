@@ -70,19 +70,19 @@ SELECT stud_id, course_code, prog_name, branch_name
 FROM students NATURAL  FULL OUTER JOIN mandatory_course_program
 join mandatory_course_branch;
 ---------------------------------------------------------------------------------------
+CREATE VIEW UnreadMandatory as
 
---CREATE VIEW UnreadMandatory as
-
---select stud_id, course_code
---from students
---join mandatory_course_program
---on students.prog_name = mandatory_course_program.prog_name
---UNION
+select stud_id, course_code
+from students
+join mandatory_course_program
+on students.prog_name = mandatory_course_program.prog_name
+UNION
 select stud_id, course_code
 from stud_chooses_branch    --(Sepil's suggestion, tidigare "FROM Student")
 join mandatory_course_branch
 on stud_chooses_branch.branch_name = mandatory_course_branch.branch_name
 --AND stud_chooses_branch.branch_name NOT IN (select stud_id, course_code from PassedCourses)
+
+  except (select stud_id, course_code FROM passedcourses);
   
---except
--
+  ----------------------------------
