@@ -109,7 +109,7 @@ CREATE TABLE Students_Registered_To_Course (
 CREATE TABLE Finished_Courses(
   course_code   char(6)  REFERENCES Courses(course_code) ,
   stud_id   TEXT  REFERENCES Students(stud_Id) ,
-  grade     CHAR(4) NOT NULL,
+  grade     CHAR(1) NOT NULL check 
   PRIMARY KEY(course_code, stud_id)
 );
 --__________________________________________________________________________
