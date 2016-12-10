@@ -1,0 +1,2 @@
+CREATE TRIGGERS TryRegisterStudent
+INSTEAD OF UPDATE 
