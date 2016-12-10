@@ -1,6 +1,6 @@
-CREATE FUNCTION addtowaitinglist (stud_id) RETURNS TRIGGER AS $$
+CREATE FUNCTION AddToWaitingList (stud_id) RETURNS TRIGGER AS $$
 BEGIN
-	< if (#maxnoofstudents < course.sum)>
+	< if (#max_nr_studs < course.sum)>
 	THEN add student to class
-	ELSE add student to queue 
+	ELSE add student to waiting 
 END IF;
