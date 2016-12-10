@@ -7,7 +7,7 @@ END IF;
 ****************************************************************
 
 
-CREATE TRIGGER tryregisterstudent 
+CREATE TRIGGER TryRegisterStudent 
 BEFORE INSTEAD OF INSERT ON Registration
 WHEN studentisonqueue
 EXECUTE PROCEDURE addtowaitinglist(stud_id);
