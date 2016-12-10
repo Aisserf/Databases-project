@@ -67,3 +67,10 @@ on stud_chooses_branch.branch_name = mandatory_course_branch.branch_name
   except (select stud_id, course_code FROM passedcourses);
   
   ----------------------------------
+CREATE OR REPLACE  VIEW CourseQueuePositions AS
+SELECT ssn, students.stud_id, course_code, position 
+FROM students
+natural join 
+waiting_list
+  --ON
+--students.stud_id = waiting_list.stud_id;
