@@ -124,23 +124,23 @@ WHERE r1 > 5 AND
 SELECT *
 FROM
 (select passedcourses.stud_id, sum(credits)
-  from PassedCourses GROUP BY stud_id ) r1
+  from PassedCourses GROUP BY stud_id ) as tot_credits
 
-  LEFT OUTER JOIN
+  --LEFT OUTER JOIN
 (select stud_id, count(course_code) from UnreadMandatory
-GROUP BY stud_id) r2
+GROUP BY stud_id) as courses_left
   
-  on r1.stud_id = r2.stud_id
+  on tot_credits.stud_id = courses_left.stud_id
 
-  LEFT OUTER JOIN
+  --LEFT OUTER JOIN
   (select stud_id, sum(credits)
 from passedcourses
 join has_classification
 on passedcourses.course_code = has_classification.course_code
 WHERE has_classification.class_name = 'mathematical course'
-GROUP BY stud_id) r3
+GROUP BY stud_id) as credits_mathematical
   
-  on r2.stud_id = r3.stud_id
+  on courses_left.stud_id = credits_mathematical.stud_id
 
   LEFT OUTER JOIN
 (select stud_id, sum(credits)
@@ -148,9 +148,9 @@ from passedcourses
 join has_classification
 on passedcourses.course_code = has_classification.course_code
 WHERE has_classification.class_name = 'research course'
-GROUP BY stud_id) r4
+GROUP BY stud_id) as credits_research
   
-  on r3.stud_id = r4.stud_id
+  on credits_mathematical.stud_id = credits_research.stud_id
 
   LEFT OUTER JOIN
   (select stud_id, count(passedcourses.course_code)
@@ -158,9 +158,9 @@ from passedcourses
 join has_classification
 on passedcourses.course_code = has_classification.course_code
 WHERE has_classification.class_name = 'seminar course'
-GROUP BY stud_id) r5
+GROUP BY stud_id) as credits_seminar
   
-  on r4.stud_id = r5.stud_id
+  on credits_research.stud_id = credits_seminar.stud_id
   
 LEFT OUTER JOIN
   (select pc.stud_id, sum(credits)
@@ -169,9 +169,9 @@ where sb.stud_id = pc.stud_id
 and sb.branch_name = rb.branch_name
 and sb.prog_name = rb.prog_name
 and rb.course_code = pc.course_code
-group by pc.stud_id) r6
+group by pc.stud_id) as credits_recommended
   
-  on r5.stud_id = r6.stud_id
+  on credits_seminar.stud_id = credits_recommended.stud_id
 
 WHERE r1.sum > 5 AND
   r2.count < 1 AND
