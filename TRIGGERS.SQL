@@ -33,4 +33,35 @@ declare
 
 BEGIN
 
+--------------------------------------------------------------------------
+
+CREATE FUNCTION public."CourseRegistration"() RETURNS trigger AS $$
+BEGIN
+IF EXISTS(
+SELECT count(stud_id), course_code, max_nr_studs
+FROM Students_Registered_to_courses NATURAL JOIN limited_courses
+WHERE stud_id = NEW.stud_id AND course_code = NEW.course_code
+GROUP BY stud_id, course_code
+HAVING count(stud_id) >= max_nr_stud)
+
+THEN RAISE EXCEPTION 'course is full';
+ELSE RETURN NEW;
+END IF;
+
+IF EXISTS(
+SELECT stud_id, course_code
+FROM finished_courses
+WHERE stud_id = NEW.stud_id
+AND course_code = NEW.course_code)
+
+THEN RAISE EXCEPTION 'student has already passed this course';
+ELSE  RETURN NEW;
+END IF;
+
+
+
+END $$ LANGUAGE plpgsql;
+
+
+
 
