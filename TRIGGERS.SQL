@@ -22,3 +22,8 @@ CREATE TRIGGER TryRegisterStudent
 FOR EACH ROW 
 EXECUTE PROCEDURE addtowaitinglist(course_code,stud_id);
 
+-----------------------------------------------------------------------
+
+CREATE TRIGGER TryRegisterStudent
+INSTEAD OF INSERT OR UPDATE OR DELETE ON Registrations 
+FOR EACH ROW EXECUTE PROCEDURE AddToWaitingList();
