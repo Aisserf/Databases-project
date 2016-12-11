@@ -58,6 +58,15 @@ THEN RAISE EXCEPTION 'student has already passed this course';
 ELSE  RETURN NEW;
 END IF;
 
+IF NOT(
+SELECT course_code, required_course
+FROM course_requires_course NATURAL JOIN passed_courses
+ON course_code = required_code
+WHERE course_code = NEW.course_code
+AND required_course = NEW.required_course)
+THEN RAISE EXCEPTION 'STUDENT HAS NOT PASSED PREREQUISITES ';
+	ELSE RETURN NEW;
+END IF;
 
 
 END $$ LANGUAGE plpgsql;
