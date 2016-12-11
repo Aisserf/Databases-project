@@ -39,7 +39,7 @@ CREATE FUNCTION public."CourseRegistration"() RETURNS trigger AS $$
 BEGIN
 IF EXISTS(
 SELECT count(stud_id), course_code, max_nr_studs
-FROM Students_Registered_to_courses NATURAL JOIN limited_courses
+FROM Students_Registered_to_course NATURAL JOIN limited_courses
 WHERE stud_id = NEW.stud_id AND course_code = NEW.course_code
 GROUP BY stud_id, course_code
 HAVING count(stud_id) >= max_nr_stud)
@@ -144,6 +144,7 @@ THEN RAISE EXCEPTION 'student is already registered to course';
 ELSE RETURN NEW;
 END IF;
 END $$ LANGUAGE 'plpgsql';
+
 
 CREATE TRIGGER myTrigger4
 INSTEAD OF INSERT ON Registrations
