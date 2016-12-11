@@ -1,31 +1,4 @@
 
-****************************************************************
-
-CREATE FUNCTION AddToWaitingList() RETURNS TRIGGER AS $TryRegisterStudent$
-DECLARE
-	
-	
-
-BEGIN
-  IF (#max_nr_studs < course.sum)
-  THEN INSERT INTO Courses (course_code, stud_id)
-  VALUES (course, stud_id);
-  
-  ELSE 
-  INSERT INTO Wainting_list(course, stud_id)
-  VALUES (course, stud_id)
-END IF;
-$TryRegisterStudent$ LANGUAGE 'plpgsql';
---RAISE EXCEPTION ’if student is already registered she cannot queue’;
-    
-CREATE TRIGGER TryRegisterStudent 
- INSTEAD OF INSERT ON Registrations
---WHEN studentisonqueue
-  FOR EACH ROW 
-EXECUTE PROCEDURE addtowaitinglist(course_code,stud_id);
-
-**********************************************************************************************
-*****************************************************
 
 CREATE FUNCTION AddToWaitingList() RETURNS TRIGGER AS $TryRegisterStudent$
 BEGIN
