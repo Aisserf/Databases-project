@@ -1,53 +1,24 @@
 
-
-CREATE FUNCTION AddToWaitingList() RETURNS TRIGGER AS $TryRegisterStudent$
-BEGIN
-	--Check that course isn’t full
-	IF NEW.MaxNoOfStudents > studentsInCourse THEN
-	RAISE EXCEPTION ’Course is full’;
-	END IF;
-	--Check that student isn’t already registered
-	IF NEW.Stud_Id = registration.stud_id.course THEN
-	RAISE EXCEPTION ’student is already registered’;
-	END IF;
-	--If there is room in class
-	IF NEW.studentsinclass < maxNoOfStudents THEN
-END
-$TryRegisterStudent$ LANGUAGE plpgsql;
---RAISE EXCEPTION ’if student is already registered she cannot queue’;
-    
-CREATE TRIGGER TryRegisterStudent 
- INSTEAD OF INSERT ON Registrations
---WHEN studentisonqueue
-FOR EACH ROW 
-EXECUTE PROCEDURE addtowaitinglist(course_code,stud_id);
-
------------------------------------------------------------------------
-
-CREATE TRIGGER TryRegisterStudent
-INSTEAD OF INSERT OR UPDATE OR DELETE ON Registrations 
-FOR EACH ROW EXECUTE PROCEDURE AddToWaitingList();
-
-CREATE OR REPLACE FUNCTION AddToWaitingList() RETURNS TRIGGER AS $TryRegisterStudent$
-declare 
-
+CREATE OR REPLACE FUNCTION myFunction7() RETURNS TRIGGER AS $$
 BEGIN
 
---------------------------------------------------------------------------
 
-CREATE FUNCTION public."CourseRegistration"() RETURNS trigger AS $$
-BEGIN
+--Check if course is full
 IF EXISTS(
-SELECT count(stud_id), course_code, max_nr_studs
-FROM Students_Registered_to_course NATURAL JOIN limited_courses
+SELECT count(stud_id) AND Students_Registered_to_course.course_code, max_nr_studs
+FROM Students_Registered_to_course, limited_courses
 WHERE stud_id = NEW.stud_id AND course_code = NEW.course_code
-GROUP BY stud_id, course_code
-HAVING count(stud_id) >= max_nr_stud)
+GROUP BY stud_id, Students_Registered_to_course.course_code, max_nr_studs
+HAVING count(stud_id) > max_nr_studs)
 
 THEN RAISE EXCEPTION 'course is full';
+
 ELSE RETURN NEW;
-CREATE FUNCTION public."CourseRequisites"() RETURNS trigger AS $$
-BEGIN
+END IF;
+END $$ LANGUAGE 'plpgsql';
+
+
+--Check if student has passes preregusites
 IF NOT(
 SELECT course_code, required_course
 FROM course_requires_course NATURAL JOIN passed_courses
@@ -57,12 +28,13 @@ AND required_course = NEW.required_course
 HAVING course_code = required_course)
 
 THEN RAISE EXCEPTION 'STUDENT HAS NOT PASSED PREREQUISITES';
+
 ELSE RETURN NEW;
 END IF;
-
 END $$ LANGUAGE 'plpgsql';
-END IF;
 
+
+--Check if student has already passed course
 IF EXISTS(
 SELECT stud_id, course_code
 FROM finished_courses
@@ -72,68 +44,10 @@ AND course_code = NEW.course_code)
 THEN RAISE EXCEPTION 'student has already passed this course';
 ELSE  RETURN NEW;
 END IF;
-
-IF NOT(
-SELECT course_code, required_course
-FROM course_requires_course NATURAL JOIN passed_courses
-ON course_code = required_code
-WHERE course_code = NEW.course_code
-AND required_course = NEW.required_course)
-THEN RAISE EXCEPTION 'STUDENT HAS NOT PASSED PREREQUISITES ';
-	ELSE RETURN NEW;
-END IF;
-
-
-END $$ LANGUAGE plpgsql;
-------------------------------------------
----------------------Nyaste BETTYS--------******FUNGERAR*****
-
-CREATE OR REPLACE FUNCTION myFunction2() RETURNS TRIGGER AS $$
-BEGIN
-IF EXISTS(
-SELECT count(stud_id), course_code, max_nr_studs
-FROM Students_Registered_to_courses NATURAL JOIN limited_courses
-WHERE stud_id = NEW.stud_id AND course_code = NEW.course_code
-GROUP BY stud_id, course_code
-HAVING count(stud_id) >= max_nr_stud)
-
-THEN RAISE EXCEPTION 'course is full';
-
-ELSE RETURN NEW;
-END IF;
-END $$ LANGUAGE 'plpgsql';
-
-CREATE TRIGGER myTrigger2
-INSTEAD OF INSERT ON Registrations
-FOR EACH ROW
-EXECUTE PROCEDURE myFunction2();
-
-------------------------------------------------
---------------------------------------------
-
-
-CREATE FUNCTION public."CourseRequisites"() RETURNS trigger AS $$
-BEGIN
-IF NOT(
-SELECT course_code, required_course
-FROM course_requires_course NATURAL JOIN passed_courses
-ON course_code = required_code
-WHERE course_code = NEW.course_code
-AND required_course = NEW.required_course
-HAVING course_code = required_course)
-
-THEN RAISE EXCEPTION 'STUDENT HAS NOT PASSED PREREQUISITES';
-ELSE RETURN NEW;
-END IF;
-
-
-
 END $$ LANGUAGE 'plpgsql';
 
 
------------------------------------------
-CREATE OR REPLACE FUNCTION myFunction4() RETURNS TRIGGER AS $$
-BEGIN
+--Check if student is already registered to course
 IF EXISTS(
 SELECT (stud_id AND course_code)
 FROM Students_Registered_to_courses
@@ -146,8 +60,7 @@ END IF;
 END $$ LANGUAGE 'plpgsql';
 
 
-CREATE TRIGGER myTrigger4
+CREATE TRIGGER myTrigger7
 INSTEAD OF INSERT ON Registrations
 FOR EACH ROW
-EXECUTE PROCEDURE myFunction4();
-
+EXECUTE PROCEDURE myFunction7();
