@@ -51,7 +51,7 @@ CREATE TABLE Classifications (
 --____________________________________________________
 
 CREATE TABLE Limited_courses(
-  max_nr_studs  INTEGER,
+  max_nr_studs  INTEGER NOT NULL,
   course_code  CHAR(6) REFERENCES Courses(course_code),
   PRIMARY KEY (course_code)
 );
