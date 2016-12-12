@@ -179,3 +179,84 @@ WHERE r1.sum > 5 AND
   r4.sum > 9 AND
   r5.count > 0 AND
   r6.sum < 9;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------
+CREATE VIEW pathtograduation AS
+SELECT student,
+    COALESCE(r1, 0) AS r1,
+    COALESCE(r2, 0) AS r2,
+    COALESCE(r3, 0) AS r3,    
+    COALESCE(r4, 0) AS r4,
+    COALESCE(r5, 0) AS r5,
+    COALESCE(r6, 0) AS r6,
+
+CASE
+WHEN(
+r2 IS NULL
+AND r3 >=20
+AND r4 >=10
+AND r5 >= 1
+AND r1 >=10
+AND r6 >=10
+)
+THEN TRUE
+ELSE FALSE
+END AS can_graduate
+
+FROM
+(SELECT stud_id, prog_name, branch_name FROM studentsfollowing) AS student
+
+NATURAL LEFT JOIN
+(select passedcourses.stud_id, sum(credits)
+  from PassedCourses GROUP BY stud_id ) AS r1
+
+  NATURAL LEFT JOIN
+(select stud_id, count(course_code) from UnreadMandatory
+GROUP BY stud_id) AS r2
+
+  NATURAL LEFT JOIN
+  (select stud_id, sum(credits)
+from passedcourses
+join has_classification
+on passedcourses.course_code = has_classification.course_code
+WHERE has_classification.class_name = 'mathematical course'
+GROUP BY stud_id) AS r3
+
+  NATURAL LEFT JOIN
+(select stud_id, sum(credits)
+from passedcourses
+join has_classification
+on passedcourses.course_code = has_classification.course_code
+WHERE has_classification.class_name = 'research course'
+GROUP BY stud_id) As r4
+
+NATURAL LEFT JOIN
+  (select stud_id, count(passedcourses.course_code)
+from passedcourses
+join has_classification
+on passedcourses.course_code = has_classification.course_code
+WHERE has_classification.class_name = 'seminar course'
+GROUP BY stud_id) AS r5
+  
+NATURAL LEFT JOIN
+  (select pc.stud_id, sum(credits)
+from stud_chooses_branch sb, passedcourses pc, recommended_course_branch rb
+where sb.stud_id = pc.stud_id
+and sb.branch_name = rb.branch_name
+and sb.prog_name = rb.prog_name
+and rb.course_code = pc.course_code
+group by pc.stud_id) AS r6;
