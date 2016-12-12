@@ -260,3 +260,67 @@ and sb.branch_name = rb.branch_name
 and sb.prog_name = rb.prog_name
 and rb.course_code = pc.course_code
 group by pc.stud_id) AS r6;
+
+
+
+
+
+------------------- new 12-12-2016--- Fressia
+
+CREATE VIEW pathtograduation AS
+SELECT s.stud_id, s.credits, c.course_code, c.class_name
+FROM Students s, has_classifications c
+
+
+JOIN
+(select passedcourses.stud_id, sum(credits)
+  from PassedCourses GROUP BY stud_id ) r1
+
+ JOIN
+(select stud_id, count(course_code) from UnreadMandatory
+GROUP BY stud_id) r2
+
+ JOIN
+  (select stud_id, sum(credits)
+from passedcourses
+join c
+on passedcourses.course_code = c.course_code
+WHERE c.class_name = 'mathematical course'
+GROUP BY stud_id) r3
+
+ JOIN
+(select stud_id, sum(credits)
+from passedcourses
+join c
+on passedcourses.course_code = c.course_code
+WHERE c.class_name = 'research course'
+GROUP BY stud_id) r4
+
+JOIN
+  (select stud_id, count(passedcourses.course_code)
+from passedcourses
+join c
+on passedcourses.course_code = c.course_code
+WHERE c.class_name = 'seminar course'
+GROUP BY stud_id) r5
+  
+JOIN
+  (select pc.stud_id, sum(credits)
+from stud_chooses_branch sb, passedcourses pc, recommended_course_branch rb
+where sb.stud_id = pc.stud_id
+and sb.branch_name = rb.branch_name
+and sb.prog_name = rb.prog_name
+and rb.course_code = pc.course_code
+group by pc.stud_id) r6
+
+WHERE r1 > 5 AND
+  r2 < 1 AND
+  r3 > 19 AND
+  r4 > 9 AND
+  r5 > 0 AND
+  r6 > 9
+  GROUP BY stud_id;
+  
+  
+  
+  
