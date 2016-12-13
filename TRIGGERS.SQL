@@ -64,3 +64,94 @@ CREATE TRIGGER myTrigger7
 INSTEAD OF INSERT ON Registrations
 FOR EACH ROW
 EXECUTE PROCEDURE myFunction7();
+
+----------------------------------------------------------------------
+-- albins suggestion
+
+DROP TRIGGER IF EXISTS Register ON Registrations CASCADE;
+DROP TRIGGER IF EXISTS Unregister ON Registrations CASCADE;
+
+---------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION try_register() RETURNS TRIGGER AS $$
+BEGIN
+	IF NOT EXISTS (
+		-- Kolla om det finns någon student
+    
+	) THEN RAISE EXCEPTION '% does not exist', NEW.studentID;
+	END IF;
+
+	IF EXISTS (
+		-- Kolla om han redan är registerad
+	) THEN RAISE EXCEPTION '% is already registered', NEW.studentID;
+	END IF;
+
+	IF EXISTS (
+		-- Kolla om han redan klarat kursen
+	) THEN RAISE EXCEPTION '% has passed the course already', NEW.studentID;
+	END IF;
+					
+	IF EXISTS ( 
+		-- Kolla om han klarat alla pre-courses
+	) THEN RAISE EXCEPTION '% has not passed the pre-courses', NEW.studentID;
+	END IF;
+	
+	IF (
+		-- Kolla om kursen är full
+	) THEN -- Om den är full så lägg in han i kölistan
+	ELSE
+		-- den va inte full, så han kan således registreras på kursen!
+	END IF;
+	
+	RETURN NEW;
+END
+$$ LANGUAGE 'plpgsql';
+
+---------------------------------------------------------------------
+
+CREATE TRIGGER Register 
+	INSTEAD OF INSERT ON Registrations
+	FOR EACH ROW
+	EXECUTE PROCEDURE try_register();
+
+---------------------------------------------------------------------
+	
+CREATE OR REPLACE FUNCTION try_unregister() RETURNS TRIGGER AS $$
+DECLARE
+	sId BIGINT;
+BEGIN
+	IF EXISTS (
+		-- Kolla om studenten existerar
+	) THEN 
+		IF EXISTS (
+			-- Kolla om kursen existerar
+		) THEN
+			-- Ta bort studenten från kursen
+				
+			--
+			-- Kolla på något sätt om det finns platser i kursen
+			-- och om i så fall gör nedanstående grejer.
+			--
+				
+			sId := Lika med han som är plats 1
+		
+			IF (sId IS NOT NULL) -- Alltså att det fanns någon på plats 1
+			THEN 
+				-- Lägg in han i kursen
+				-- Ta bort honom från kölistan
+				
+				-- Uppdatera alla som är kvar i kölistan med deras värde minus 1
+			END IF;
+		END IF;
+	END IF;
+	
+	RETURN OLD;
+END
+$$ LANGUAGE 'plpgsql';
+
+---------------------------------------------------------------------
+	
+CREATE TRIGGER Unregister 
+	INSTEAD OF DELETE ON Registrations
+	FOR EACH ROW
+	EXECUTE PROCEDURE try_unregister();
