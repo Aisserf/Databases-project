@@ -201,7 +201,20 @@ BEGIN
 
 
 --Check if course is full
-IF EXISTS(
+IF 
+(select count(stud_id) from registrations r where r.course_code = new.course_code) 
+ < (SELECT max_nr_studs from limited_courses where course_code = new.course_code)
+THEN 
+	insert into Students_Registered_To_Course.(course_code,stud_id);
+else return new;
+end if;
+end $$ language plpsql;
+	
+--count registrations matcha på kurs <
+--limit from limitedcourse
+	--insert på student_register_to_course
+	
+---	
 SELECT count(stud_id)
 FROM Registrations r, limited_courses lc
 WHERE stud_id = NEW.stud_id
