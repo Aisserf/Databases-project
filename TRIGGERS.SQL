@@ -11,11 +11,11 @@ BEGIN
 
 --Check if course is full
 IF EXISTS(
-SELECT count(stud_id) AND Students_Registered_to_course.course_code, max_nr_studs
-FROM Students_Registered_to_course, limited_courses
-WHERE stud_id = NEW.stud_id AND course_code = NEW.course_code
-GROUP BY stud_id, Students_Registered_to_course.course_code, max_nr_studs
-HAVING count(stud_id) > max_nr_studs)
+SELECT count(stud_id)
+FROM Registrations r, limited_courses lc
+WHERE stud_id = NEW.stud_id 
+AND r.course_code = NEW.course_code
+HAVING count(stud_id) >= max_nr_studs)
 
 THEN RAISE EXCEPTION 'course is full';
 
