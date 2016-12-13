@@ -196,7 +196,7 @@ CREATE TRIGGER Register
   FOR EACH ROW
   EXECUTE PROCEDURE try_register();
   _____________________________________________________________________________________________
--- check if course is full - second try:
+-- SHIT THAT ACTUALLY WORKS:
 
 CREATE or replace FUNCTION "myfunction7"() RETURNS trigger AS $$
 BEGIN
