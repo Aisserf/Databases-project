@@ -37,7 +37,8 @@ ELSE
  			< (SELECT max_nr_studs from limited_courses where course_code = new.course_code))
 			THEN
   			insert into Students_Registered_To_Course values (new.course_code,new.stud_id);
-			else return new;
+			else insert into waiting_list values (new.course_code, new.stud_id);
+			return new;
 			END IF; 
 		END IF;
 	END IF;
