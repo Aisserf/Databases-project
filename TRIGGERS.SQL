@@ -79,8 +79,8 @@ BEGIN
 		-- Kolla om det finns någon student
     	SELECT (stud_id AND course_code)
 	FROM Students_Registered_to_courses
-	--WHERE stud_id = NEW.stud_id 
-	--AND course_code = NEW.course_code)
+	WHERE stud_id = NEW.stud_id 
+	AND course_code = NEW.course_code)
 	THEN RAISE EXCEPTION '% does not exist', NEW.studentID;
 	END IF;
 
@@ -91,6 +91,11 @@ BEGIN
 
 	IF EXISTS (
 		-- Kolla om han redan klarat kursen
+		IF EXISTS(
+		SELECT stud_id, course_code
+		FROM finished_courses
+		WHERE stud_id = NEW.stud_id
+		AND course_code = NEW.course_code)
 	) THEN RAISE EXCEPTION '% has passed the course already', NEW.studentID;
 	END IF;
 					
@@ -158,3 +163,51 @@ CREATE TRIGGER Unregister
 	INSTEAD OF DELETE ON Registrations
 	FOR EACH ROW
 	EXECUTE PROCEDURE try_unregister();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	----
+	DROP TRIGGER IF EXISTS Register ON Registrations CASCADE;
+CREATE OR REPLACE FUNCTION try_register() RETURNS TRIGGER AS $$
+BEGIN
+ 
+    -- Kolla om han redan klarat kursen
+    IF EXISTS(
+    SELECT stud_id, course_code
+    FROM finished_courses
+    WHERE stud_id = NEW.stud_id
+    AND course_code = NEW.course_code)
+   THEN RAISE EXCEPTION '% has passed the course already', NEW.studentID;
+  END IF;
+
+  return new;
+
+  END
+$$ LANGUAGE 'plpgsql';
+    
+CREATE TRIGGER Register
+  INSTEAD OF INSERT ON Registrations
+  FOR EACH ROW
+  EXECUTE PROCEDURE try_register();
+
+
