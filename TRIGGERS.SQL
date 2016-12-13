@@ -258,13 +258,21 @@ CREATE or replace FUNCTION "myfunction7"() RETURNS trigger AS $$
 BEGIN
 
 IF EXISTS(
-SELECT (stud_id AND course_code)
-FROM Students_Registered_to_courses
-WHERE stud_id = NEW.stud_id AND course_code = NEW.course_code)
+SELECT stud_id
+FROM registrations
+WHERE status = 'Registered' AND (stud_id,course_code) = (NEW.stud_id,NEW.course_code))
 
-THEN RAISE EXCEPTION 'student is already registered to course';
+THEN RAISE exception 'student is already registered to course';
+END IF; 
+RETURN NEW;
+END $$ LANGUAGE 'plpgsql';
 
-ELSE RETURN NEW;
-END IF;
-END $$ LANGUAGE 'plpgsql'
+-----
 
+CREATE TRIGGER myTrigger7
+INSTEAD OF INSERT ON Registrations
+FOR EACH ROW
+EXECUTE PROCEDURE myFunction7();
+
+------
+insert into registrations(course_code, stud_id) values('MVE415','betr');
