@@ -1,4 +1,10 @@
 
+
+INSERT INTO registrations (course_code, stud_id) VALUES ('LMT211','betr');
+
+
+
+
 CREATE OR REPLACE FUNCTION myFunction7() RETURNS TRIGGER AS $$
 BEGIN
 
