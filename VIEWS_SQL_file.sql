@@ -40,9 +40,14 @@ FROM Courses NATURAL JOIN finished_courses;
 
 --—————————————————————————
 
-CREATE VIEW Registrations AS 
-SELECT * 
-FROM Students_Registered_To_Course NATURAL full OUTER JOIN Waiting_List;
+CREATE OR REPLACE VIEW Registrations AS 
+(SELECT w.course_code,w.stud_id, 'Waiting' AS Status
+FROM Waiting_List w) we
+UNION ALL
+(SELECT r.*, 'Registered' AS Status
+FROM Students_Registered_To_Course r)
+;
+
 
 --________________________
 CREATE VIEW PassedCourses AS 
