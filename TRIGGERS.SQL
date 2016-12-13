@@ -215,24 +215,20 @@ END IF;
 END $$ LANGUAGE plpgsql;
 -----------
 
-CREATE FUNCTION public."myfunction7"() RETURNS trigger AS $$
+CREATE or replace  FUNCTION public."myfunction7"() RETURNS trigger AS $$
 BEGIN
 
---Check if student has passes preregusites
 IF EXISTS(
   -- alla required course per kurs
-  select(
+  (select
   required_course from course_requires_course crc
-    where crc.required_course = new.course_code
-  group by courses.course_code
-    )
+    where crc.course_code = new.course_code )
   EXCEPT
   -- alla passed courses per student
- select (
- course_code from passed_courses pc
-   where pc.course_code = new.course_code
-  group by students.stud_id
- )
+ (select
+ course_code from PassedCourses pc
+   where pc.stud_id = new.stud_id)
+  )
   
 THEN RAISE EXCEPTION 'STUDENT HAS NOT PASSED PREREQUISITES';
 
