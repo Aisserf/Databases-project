@@ -252,4 +252,19 @@ BEGIN
 
   END
 $$ LANGUAGE 'plpgsql';
+----------
+--check if student already registered fressia
+CREATE or replace FUNCTION "myfunction7"() RETURNS trigger AS $$
+BEGIN
+
+IF EXISTS(
+SELECT (stud_id AND course_code)
+FROM Students_Registered_to_courses
+WHERE stud_id = NEW.stud_id AND course_code = NEW.course_code)
+
+THEN RAISE EXCEPTION 'student is already registered to course';
+
+ELSE RETURN NEW;
+END IF;
+END $$ LANGUAGE 'plpgsql'
 
