@@ -171,6 +171,8 @@ CREATE TRIGGER Unregister
 	EXECUTE PROCEDURE try_unregister();
 	
 --------------------------------------------------------------------------
+--insert into registrations (course_code, stud_id) values('LET625','betr');
+	
 	DROP TRIGGER IF EXISTS Register ON Registrations CASCADE;
 CREATE OR REPLACE FUNCTION try_register() RETURNS TRIGGER AS $$
 BEGIN
@@ -181,7 +183,7 @@ BEGIN
     FROM finished_courses
     WHERE stud_id = NEW.stud_id
     AND course_code = NEW.course_code)
-   THEN RAISE EXCEPTION '% has passed the course already', NEW.studentID;
+   THEN RAISE Notice '% has passed the course already', NEW.stud_id;
   END IF;
 
   return new;
@@ -231,4 +233,23 @@ THEN RAISE EXCEPTION 'STUDENT HAS NOT PASSED PREREQUISITES';
 ELSE RETURN NEW;
 END IF;
 END $$ LANGUAGE plpgsql;
+
+--------
+--check if student passed that course
+CREATE OR REPLACE FUNCTION try_register() RETURNS TRIGGER AS $$
+BEGIN
+ 
+    -- Kolla om han redan klarat kursen
+    IF EXISTS(
+    SELECT stud_id, course_code
+    FROM finished_courses
+    WHERE stud_id = NEW.stud_id
+    AND course_code = NEW.course_code)
+   THEN RAISE Notice '% has passed the course already', NEW.stud_id;
+  END IF;
+
+  return new;
+
+  END
+$$ LANGUAGE 'plpgsql';
 
