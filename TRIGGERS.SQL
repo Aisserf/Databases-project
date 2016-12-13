@@ -77,8 +77,11 @@ CREATE OR REPLACE FUNCTION try_register() RETURNS TRIGGER AS $$
 BEGIN
 	IF NOT EXISTS (
 		-- Kolla om det finns någon student
-    
-	) THEN RAISE EXCEPTION '% does not exist', NEW.studentID;
+    	SELECT (stud_id AND course_code)
+	FROM Students_Registered_to_courses
+	--WHERE stud_id = NEW.stud_id 
+	--AND course_code = NEW.course_code)
+	THEN RAISE EXCEPTION '% does not exist', NEW.studentID;
 	END IF;
 
 	IF EXISTS (
