@@ -71,7 +71,7 @@ INSTEAD OF INSERT ON Registrations
 FOR EACH ROW
 EXECUTE PROCEDURE myFunction7();
 
-----------------------------------------------------------------------
+______________________________________________________________________________________________________________
 -- albins suggestion
 
 DROP TRIGGER IF EXISTS Register ON Registrations CASCADE;
@@ -170,29 +170,7 @@ CREATE TRIGGER Unregister
 	FOR EACH ROW
 	EXECUTE PROCEDURE try_unregister();
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	----
+--------------------------------------------------------------------------
 	DROP TRIGGER IF EXISTS Register ON Registrations CASCADE;
 CREATE OR REPLACE FUNCTION try_register() RETURNS TRIGGER AS $$
 BEGIN
@@ -215,5 +193,25 @@ CREATE TRIGGER Register
   INSTEAD OF INSERT ON Registrations
   FOR EACH ROW
   EXECUTE PROCEDURE try_register();
+  _____________________________________________________________________________________________
+-- check if course is full - second try:
+
+CREATE FUNCTION public."myfunction7"() RETURNS trigger AS $$
+BEGIN
+
+
+--Check if course is full
+IF EXISTS(
+SELECT count(stud_id)
+FROM Registrations r, limited_courses lc
+WHERE stud_id = NEW.stud_id
+AND r.course_code = NEW.course_code
+HAVING count(stud_id) >= max_nr_studs)
+
+THEN RAISE EXCEPTION 'course is full';
+
+ELSE RETURN NEW;
+END IF;
+END $$ LANGUAGE plpgsql;
 
 
