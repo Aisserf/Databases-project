@@ -127,9 +127,11 @@ INSERT INTO Stud_Chooses_Branch (stud_id, branch_name, prog_name) VALUES('joseg'
 
 --________________________________________________________________________________
 
-INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('isbele','TDA357','6');
+INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('isbele','TDA357','1');
 INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('joseg','DAT050','1');
-INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('espinod','MVE415','8');
+INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('espinod','MVE415','1');
+INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('joseg','MVE415','2');
+INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('shahadt','MVE415','3');
 
 --_____________________________________________________________________________
 
