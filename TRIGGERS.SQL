@@ -196,38 +196,21 @@ CREATE TRIGGER Register
   _____________________________________________________________________________________________
 -- check if course is full - second try:
 
-CREATE FUNCTION public."myfunction7"() RETURNS trigger AS $$
+CREATE or replace FUNCTION "myfunction7"() RETURNS trigger AS $$
 BEGIN
 
 
---Check if course is full
-IF 
-(select count(stud_id) from registrations r where r.course_code = new.course_code) 
- < (SELECT max_nr_studs from limited_courses where course_code = new.course_code)
-THEN 
-	insert into Students_Registered_To_Course.(course_code,stud_id);
+--Check if course is full, put student on waitig list
+IF (
+(select count(stud_id) from registrations r where r.course_code = new.course_code)
+ < (SELECT max_nr_studs from limited_courses where course_code = new.course_code))
+THEN
+  insert into Students_Registered_To_Course values (new.course_code,new.stud_id);
 else return new;
 end if;
-end $$ language plpsql;
-	
---count registrations matcha på kurs <
---limit from limitedcourse
-	--insert på student_register_to_course
-	
----	
-SELECT count(stud_id)
-FROM Registrations r, limited_courses lc
-WHERE stud_id = NEW.stud_id
-AND r.course_code = NEW.course_code
-HAVING count(stud_id) >= max_nr_studs)
-
-THEN RAISE EXCEPTION 'course is full';
-
-ELSE RETURN NEW;
-END IF;
-END $$ LANGUAGE plpgsql;
+end $$ language 'plpgsql';
 -----------
-
+-- check if course required courses are passed
 CREATE or replace  FUNCTION public."myfunction7"() RETURNS trigger AS $$
 BEGIN
 
