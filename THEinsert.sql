@@ -54,7 +54,7 @@ INSERT INTO Students (stud_id, prog_name, ssn, stud_name) VALUES ('betr','Comput
 INSERT INTO Students (stud_id, prog_name, ssn, stud_name) VALUES ('cocob','Marine Engineering','950616','Coco Bertsson');
 INSERT INTO Students (stud_id, prog_name, ssn, stud_name) VALUES ('joseg','Electrical Engineering','960606','Jose Gunarson');
 INSERT INTO Students (stud_id, prog_name, ssn, stud_name) VALUES ('isbele','Industrial Economy and Production','930101','Isbel Erve');
-
+INSERT INTO Students (stud_id, prog_name, ssn, stud_name) VALUES ('ClarkKent','Computer Engineering','951213','Johan Luciasson');
 
 ------------------------------------------------------------------------------------------
 
@@ -99,6 +99,13 @@ INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LET625','betr'
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('DAT050','cocob','3');
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LET625','joseg','4');
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('TDA357','isbele','5');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('TDA357','ClarkKent','5');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('DAT050','ClarkKent','5');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LET625','ClarkKent','5');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LEU482','ClarkKent','5');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LEU500','ClarkKent','5');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('MVE415','ClarkKent','5');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LMT211','ClarkKent','5');
 
 ------------------------------------------------------------------------------------------
 
@@ -123,7 +130,7 @@ INSERT INTO Stud_Chooses_Branch (stud_id, branch_name, prog_name) VALUES('espino
 INSERT INTO Stud_Chooses_Branch (stud_id, branch_name, prog_name) VALUES('betr','Computer Languages','Computer Engineering');
 INSERT INTO Stud_Chooses_Branch (stud_id, branch_name, prog_name) VALUES('cocob','Energy','Marine Engineering');
 INSERT INTO Stud_Chooses_Branch (stud_id, branch_name, prog_name) VALUES('joseg','Software Engineering','Electrical Engineering');
-
+INSERT INTO Stud_Chooses_Branch (stud_id, branch_name, prog_name) VALUES('ClarkKent','Computer Languages','Computer Engineering');
 
 ------------------------------------------------------------------------------------------
 
