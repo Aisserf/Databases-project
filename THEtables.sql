@@ -108,8 +108,9 @@ CREATE TABLE Students_Registered_To_Course (
 CREATE TABLE Finished_Courses(
   course_code   char(6)  REFERENCES Courses(course_code) ,
   stud_id   TEXT  REFERENCES Students(stud_Id) ,
-  grade     CHAR(1) NOT NULL,
-  PRIMARY KEY(course_code, stud_id)
+  grade     text  NOT NULL,
+  PRIMARY KEY(course_code, stud_id),
+  constraint grade CHECK (grade = '3' and grade = '4' and grade = '5' and grade = 'U')
 );
 --__________________________________________________________________________
 
