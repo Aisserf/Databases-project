@@ -48,10 +48,10 @@ CREATE TABLE Classifications (
 );
 
 --____________________________________________________
-
 CREATE TABLE Limited_courses(
   max_nr_studs  INTEGER NOT NULL,
   course_code  CHAR(6) REFERENCES Courses(course_code),
+  CHECK (max_nr_studs > 0),
   PRIMARY KEY (course_code)
 );
 
@@ -144,8 +144,10 @@ CREATE TABLE Waiting_List(
   course_code char(6)  REFERENCES Limited_Courses(course_code),
   position INT NOT NULL,
   CONSTRAINT position UNIQUE (position, course_code),
+  CHECK (position > 0),
   PRIMARY KEY(stud_id, course_code)
 );
+
 --________________________________________________________
 
 CREATE TABLE hosting_Deptarment(
