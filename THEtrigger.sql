@@ -57,5 +57,8 @@ INSTEAD OF INSERT ON Registrations
 FOR EACH ROW
 EXECUTE PROCEDURE try_register();
 
+
+-----------------------------------------------------Second Trigger - comming soon!--------
+
 	
 	-- TDA357_050 - Betina Andersson, Shahad Naji & Fressia Merino
