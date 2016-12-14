@@ -142,6 +142,7 @@ CREATE TABLE Waiting_List(
   stud_id TEXT  REFERENCES Students(stud_id),
   course_code char(6)  REFERENCES Limited_Courses(course_code),
   position INT NOT NULL,
+  CONSTRAINT positionISTAKENFFS UNIQUE (position, course_code),
   PRIMARY KEY(stud_id, course_code)
 );
 --________________________________________________________
