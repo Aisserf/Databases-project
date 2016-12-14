@@ -58,7 +58,7 @@ FROM waiting_list;
   -----------------------------------------------------------------------
   
   -----PathtograduaOIRT-------------------------
-  DROP VIEW IF EXISTS pathtograduation ;
+ DROP VIEW IF EXISTS pathtograduation ;
 CREATE VIEW pathtograduation AS
 
 WITH credit_student AS
@@ -103,18 +103,6 @@ and rb.course_code = pc.course_code
 group by pc.stud_id)
   
 
-(SELECT  s.stud_id AS Student, c.sum AS credits, u.count AS UnreadMandatory,
-	m.sum AS MathCredits, r.sum AS ResearchCredits, ss.count AS seminarcourses,
-	rec.sum AS RecCourses, 'NOT QUALIFIED' AS GRADUATABLE 
-FROM students s
- LEFT JOIN credit_student c ON s.stud_id = c.stud_id
- LEFT JOIN unread_count u ON u.stud_id = s.stud_id 
- LEFT JOIN read_mathematical m ON m.stud_id = s.stud_id
- LEFT JOIN read_research r ON r.stud_id = s.stud_id
- LEFT JOIN read_seminar ss ON ss.stud_id = s.stud_id
- LEFT JOIN read_recommended rec ON rec.stud_id = s.stud_id) 
-
-except
 
 (SELECT  s.stud_id AS Student, c.sum AS credits, u.count AS UnreadMandatory,
 	m.sum AS MathCredits, r.sum AS ResearchCredits, ss.count AS seminarcourses,
@@ -132,5 +120,25 @@ FROM students s
 	m.sum >= 20 AND
 	r.sum >= 10 AND
 	ss.count >= 1 AND
-	rec.sum >= 10
+	rec.sum >= 10)
+
+union
+
+(SELECT  s.stud_id AS Student, c.sum AS credits, u.count AS UnreadMandatory,
+	m.sum AS MathCredits, r.sum AS ResearchCredits, ss.count AS seminarcourses,
+	rec.sum AS RecCourses, 'NOT QUALIFIED' AS GRADUATABLE 
+FROM students s
+ LEFT JOIN credit_student c ON s.stud_id = c.stud_id
+ LEFT JOIN unread_count u ON u.stud_id = s.stud_id 
+ LEFT JOIN read_mathematical m ON m.stud_id = s.stud_id
+ LEFT JOIN read_research r ON r.stud_id = s.stud_id
+ LEFT JOIN read_seminar ss ON ss.stud_id = s.stud_id
+ LEFT JOIN read_recommended rec ON rec.stud_id = s.stud_id
+
+ WHERE  c.sum < 5 OR
+	u.count IS NOT NULL OR
+	m.sum < 20 OR
+	r.sum < 10 OR
+	ss.count < 1 OR
+	rec.sum < 10
 );
