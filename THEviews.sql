@@ -1,7 +1,7 @@
 DROP VIEW IF EXISTS StudentsFollowing, FinishedCourses CASCADE;
 DROP VIEW IF EXISTS Registrations, PassedCourses CASCADE;
-DROP VIEW IF EXISTS PathToGraduation CASCADE;
 DROP VIEW IF EXISTS UnreadMandatory, CourseQueuePositions CASCADE;
+DROP VIEW IF EXISTS PathToGraduation CASCADE;
 
 ------------------------------------------------------------------------------------
 
@@ -28,10 +28,10 @@ FROM Students_Registered_To_Course r)
 
 --------------------------------------------------------------------------------
 
-
+DROP VIEW IF EXISTS PassedCourses;
 CREATE VIEW PassedCourses AS 
 SELECT stud_id, course_code, grade, credits
-FROM Finished_Courses NATURAL JOIN Courses WHERE Grade IN ( '3', '4', '5');
+FROM FinishedCourses NATURAL JOIN Courses WHERE Grade IN ( '3', '4', '5');
 
 ------------------------------------------------------------------------------
 
@@ -53,7 +53,7 @@ ON stud_chooses_branch.branch_name = mandatory_course_branch.branch_name
   ----------------------------------
 CREATE OR REPLACE  VIEW CourseQueuePositions AS
 SELECT stud_id, course_code, position 
-FROM waiting_list
+FROM waiting_list;
   
   -----------------------------------------------------------------------
   
@@ -113,8 +113,8 @@ FROM students s
  LEFT JOIN read_research r ON r.stud_id = s.stud_id
  LEFT JOIN read_seminar ss ON ss.stud_id = s.stud_id
  LEFT JOIN read_recommended rec ON rec.stud_id = s.stud_id) 
-,
---except
+
+except
 
 (SELECT  s.stud_id AS Student, c.sum AS credits, u.count AS UnreadMandatory,
 	m.sum AS MathCredits, r.sum AS ResearchCredits, ss.count AS seminarcourses,
@@ -134,6 +134,3 @@ FROM students s
 	ss.count >= 1 AND
 	rec.sum >= 10
 );
-  
-  -- TDA357_050 - Betina Andersson, Shahad Naji & Fressia Merino
-
