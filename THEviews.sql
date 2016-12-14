@@ -54,71 +54,86 @@ ON stud_chooses_branch.branch_name = mandatory_course_branch.branch_name
 CREATE OR REPLACE  VIEW CourseQueuePositions AS
 SELECT stud_id, course_code, position 
 FROM waiting_list
-
-
--------------------PATHtoGRADUATION-----no ready!---------------------------------------
-
-CREATE VIEW PathToGraduation AS
-SELECT *
-FROM
-(select passedcourses.stud_id, sum(credits)
-  from PassedCourses GROUP BY stud_id ) r1
-
-  LEFT OUTER JOIN
-(select stud_id, count(course_code) from UnreadMandatory
-GROUP BY stud_id) r2
   
-  on r1.stud_id = r2.stud_id
+  -----------------------------------------------------------------------
+  
+  -----PathtograduaOIRT-------------------------
+  DROP VIEW IF EXISTS pathtograduation ;
+CREATE VIEW pathtograduation AS
 
-  LEFT OUTER JOIN
+WITH credit_student AS
+(select passedcourses.stud_id, sum(credits)
+  from PassedCourses GROUP BY stud_id)
+
+, unread_count AS
+(select stud_id, count(course_code) from UnreadMandatory
+GROUP BY stud_id)
+
+ , read_mathematical AS
   (select stud_id, sum(credits)
 from passedcourses
 join has_classification
 on passedcourses.course_code = has_classification.course_code
 WHERE has_classification.class_name = 'mathematical course'
-GROUP BY stud_id) r3
+GROUP BY stud_id)
   
-  on r2.stud_id = r3.stud_id
-
-  LEFT OUTER JOIN
+, read_research AS
 (select stud_id, sum(credits)
 from passedcourses
 join has_classification
 on passedcourses.course_code = has_classification.course_code
 WHERE has_classification.class_name = 'research course'
-GROUP BY stud_id) r4
-  
-  on r3.stud_id = r4.stud_id
+GROUP BY stud_id)
 
-  LEFT OUTER JOIN
+, read_seminar AS
   (select stud_id, count(passedcourses.course_code)
 from passedcourses
 join has_classification
 on passedcourses.course_code = has_classification.course_code
 WHERE has_classification.class_name = 'seminar course'
-GROUP BY stud_id) r5
+GROUP BY stud_id)
   
-  on r4.stud_id = r5.stud_id
-  
-LEFT OUTER JOIN
+, read_recommended AS 
   (select pc.stud_id, sum(credits)
 from stud_chooses_branch sb, passedcourses pc, recommended_course_branch rb
 where sb.stud_id = pc.stud_id
 and sb.branch_name = rb.branch_name
 and sb.prog_name = rb.prog_name
 and rb.course_code = pc.course_code
-group by pc.stud_id) r6
+group by pc.stud_id)
   
-  on r5.stud_id = r6.stud_id
 
-WHERE r1.sum > 5 AND
-  r2.count < 1 AND
-  r3.sum > 19 AND
-  r4.sum > 9 AND
-  r5.count > 0 AND
-  r6.sum < 9;
+(SELECT  s.stud_id AS Student, c.sum AS credits, u.count AS UnreadMandatory,
+	m.sum AS MathCredits, r.sum AS ResearchCredits, ss.count AS seminarcourses,
+	rec.sum AS RecCourses, 'NOT QUALIFIED' AS GRADUATABLE 
+FROM students s
+ LEFT JOIN credit_student c ON s.stud_id = c.stud_id
+ LEFT JOIN unread_count u ON u.stud_id = s.stud_id 
+ LEFT JOIN read_mathematical m ON m.stud_id = s.stud_id
+ LEFT JOIN read_research r ON r.stud_id = s.stud_id
+ LEFT JOIN read_seminar ss ON ss.stud_id = s.stud_id
+ LEFT JOIN read_recommended rec ON rec.stud_id = s.stud_id) 
+,
+--except
 
+(SELECT  s.stud_id AS Student, c.sum AS credits, u.count AS UnreadMandatory,
+	m.sum AS MathCredits, r.sum AS ResearchCredits, ss.count AS seminarcourses,
+	rec.sum AS RecCourses, 'QUALIFIED' AS GRADUATABLE 
+FROM students s
+ LEFT JOIN credit_student c ON s.stud_id = c.stud_id
+ LEFT JOIN unread_count u ON u.stud_id = s.stud_id 
+ LEFT JOIN read_mathematical m ON m.stud_id = s.stud_id
+ LEFT JOIN read_research r ON r.stud_id = s.stud_id
+ LEFT JOIN read_seminar ss ON ss.stud_id = s.stud_id
+ LEFT JOIN read_recommended rec ON rec.stud_id = s.stud_id
+
+ WHERE  c.sum >= 5 AND
+	u.count IS NULL AND
+	m.sum >= 20 AND
+	r.sum >= 10 AND
+	ss.count >= 1 AND
+	rec.sum >= 10
+);
   
-  -----------------------------------------------------------------------
   -- TDA357_050 - Betina Andersson, Shahad Naji & Fressia Merino
 
