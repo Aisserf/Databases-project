@@ -2,7 +2,7 @@ INSERT INTO Departments(dept_id, dept_name) VALUES ('CS','Computer Science');
 INSERT INTO Departments(dept_id, dept_name) VALUES ('IT','Information Technology');
 INSERT INTO Departments(dept_id, dept_name) VALUES ('MS','Mathematical Sciences');
 
---______________________________________________________________
+------------------------------------------------------------------------------------------
 
 
 INSERT INTO Programs (prog_name, prog_id) VALUES ('Computer Engineering','CE');
@@ -12,7 +12,7 @@ INSERT INTO Programs (prog_name, prog_id) VALUES ('Marine Engineering','ME');
 INSERT INTO Programs (prog_name, prog_id) VALUES ('Machine Engineering','MCE');
 
 
---______________________________________________________________
+------------------------------------------------------------------------------------------
 
 
 INSERT INTO Courses (course_name, course_code, credits, dept_id) VALUES ('Databases','TDA357',10, 'CS');
@@ -23,7 +23,7 @@ INSERT INTO Courses (course_name, course_code, credits, dept_id) VALUES ('Machin
 INSERT INTO Courses (course_name, course_code, credits, dept_id) VALUES ('Mathematical analysis','MVE415',5, 'MS');
 INSERT INTO Courses (course_name, course_code, credits, dept_id) VALUES ('Linear Algebra','LMT211',10, 'MS');
 
---______________________________________________________
+------------------------------------------------------------------------------------------
 
 
 INSERT INTO Classifications(Class_name) VALUES	('research course');
@@ -36,7 +36,7 @@ INSERT INTO Limited_courses (max_nr_studs, course_code) VALUES ('1','TDA357');
 INSERT INTO Limited_courses (max_nr_studs, course_code) VALUES ('2','DAT050');
 INSERT INTO Limited_courses (max_nr_studs, course_code) VALUES ('1','MVE415');
 	
---__________________________________________________
+------------------------------------------------------------------------------------------
 
 
 INSERT INTO Branches (branch_name, prog_name) VALUES ('Computer Languages','Computer Engineering');
@@ -45,7 +45,7 @@ INSERT INTO Branches (branch_name, prog_name) VALUES ('Software Engineering','El
 INSERT INTO Branches (branch_name, prog_name) VALUES ('Energy','Marine Engineering');
 INSERT INTO Branches (branch_name, prog_name) VALUES ('Materials','Machine Engineering');
 
---______________________________________________________
+------------------------------------------------------------------------------------------
 
 
 INSERT INTO Students (stud_id, prog_name, ssn, stud_name) VALUES ('shahadt','Computer Engineering','960413','Shahad Tomasson');
@@ -56,7 +56,7 @@ INSERT INTO Students (stud_id, prog_name, ssn, stud_name) VALUES ('joseg','Elect
 INSERT INTO Students (stud_id, prog_name, ssn, stud_name) VALUES ('isbele','Industrial Economy and Production','930101','Isbel Erve');
 
 
---______________________________________________________________________
+------------------------------------------------------------------------------------------
 
 INSERT INTO Has_Classification(class_name, course_code) VALUES ('mathematical course','TDA357');
 INSERT INTO Has_Classification(class_name, course_code) VALUES ('research course','DAT050');
@@ -65,12 +65,12 @@ INSERT INTO Has_Classification(class_name, course_code) VALUES ('research course
 INSERT INTO Has_Classification(class_name, course_code) VALUES ('mathematical course','LEU500');
 INSERT INTO Has_Classification(class_name, course_code) VALUES ('seminar course','MVE415');
 
---________________________________________________________________________
+------------------------------------------------------------------------------------------
 
 INSERT INTO Course_Requires_Course (course_code, required_course) VALUES ('TDA357','DAT050');
 INSERT INTO Course_Requires_Course (course_code, required_course) VALUES ('LEU500','MVE415');
 
---_________________________________________________________________________
+------------------------------------------------------------------------------------------
 
 
 INSERT INTO Mandatory_Course_Program (course_code, prog_name) VALUES ('TDA357','Computer Engineering');
@@ -79,7 +79,7 @@ INSERT INTO Mandatory_Course_Program (course_code, prog_name) VALUES ('LEU482','
 INSERT INTO Mandatory_Course_Program (course_code, prog_name) VALUES ('DAT050','Marine Engineering');
 INSERT INTO Mandatory_Course_Program (course_code, prog_name) VALUES ('LET625','Industrial Economy and Production');
 
---______________________________________________________________________
+------------------------------------------------------------------------------------------
 
 INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('TDA357','shahadt');
 INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('LET625','espinod');
@@ -91,7 +91,7 @@ INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('DAT050
 INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('LEU500','cocob');
 INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('MVE415','joseg');
 
---______________________________________________________________________
+------------------------------------------------------------------------------------------
 
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('TDA357','shahadt','5');
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('DAT050','espinod','5');
@@ -100,7 +100,7 @@ INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('DAT050','cocob
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LET625','joseg','4');
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('TDA357','isbele','5');
 
---______________________________________________________________________
+------------------------------------------------------------------------------------------
 
 INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALUES('TDA357','Computer Languages','Computer Engineering');
 INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALUES('LEU500','Interaction Design','Computer Engineering');
@@ -108,7 +108,7 @@ INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALU
 INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALUES('LMT211','Energy','Marine Engineering');
 INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALUES('MVE415','Materials','Machine Engineering');
 
---_________________________________________________________________________________
+------------------------------------------------------------------------------------------
 
 INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES('DAT050','Computer Languages','Computer Engineering');
 INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES('LET625','Interaction Design','Industrial Economy and Production');
@@ -116,7 +116,7 @@ INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES(
 INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES('LEU500','Energy','Marine Engineering');
 INSERT INTO Mandatory_Course_Branch (course_code,branch_name, prog_name) VALUES('TDA357','Materials','Machine Engineering');
 
---___________________________________________________________________________
+------------------------------------------------------------------------------------------
 
 INSERT INTO Stud_Chooses_Branch (stud_id, branch_name, prog_name) VALUES('shahadt','Computer Languages','Computer Engineering');
 INSERT INTO Stud_Chooses_Branch (stud_id, branch_name, prog_name) VALUES('espinod','Interaction Design','Industrial Economy and Production');
@@ -125,7 +125,7 @@ INSERT INTO Stud_Chooses_Branch (stud_id, branch_name, prog_name) VALUES('cocob'
 INSERT INTO Stud_Chooses_Branch (stud_id, branch_name, prog_name) VALUES('joseg','Software Engineering','Electrical Engineering');
 
 
---________________________________________________________________________________
+------------------------------------------------------------------------------------------
 
 INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('isbele','TDA357','1');
 INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('joseg','DAT050','1');
@@ -133,8 +133,11 @@ INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('espinod','MVE41
 INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('joseg','MVE415','2');
 INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('shahadt','MVE415','3');
 
---_____________________________________________________________________________
+----------------------------------------------------------------------------------------
 
 INSERT INTO hosting_Deptarment (dept_id, prog_name) VALUES ('CS','Computer Engineering');
 INSERT INTO hosting_Deptarment (dept_id, prog_name) VALUES ('IT','Industrial Economy and Production');
 INSERT INTO hosting_Deptarment (dept_id, prog_name) VALUES ('MS','Machine Engineering');
+
+
+-- TDA357_050 - Betina Andersson, Shahad Naji & Fressia Merino
