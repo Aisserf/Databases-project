@@ -61,4 +61,4 @@ EXECUTE PROCEDURE try_register();
 -----------------------------------------------------Second Trigger - comming soon!--------
 
 	
-	-- TDA357_050 - Betina Andersson, Shahad Naji & Fressia Merino
+	-- TDA357_050 - GRUPP 93- Betina Andersson, Shahad Naji & Fressia Merino
