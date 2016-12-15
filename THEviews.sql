@@ -1,3 +1,5 @@
+-- TDA357_050 - GRUPP 93- Betina Andersson, Fressia Merino & Shahad Naji
+
 DROP VIEW IF EXISTS StudentsFollowing, FinishedCourses CASCADE;
 DROP VIEW IF EXISTS Registrations, PassedCourses CASCADE;
 DROP VIEW IF EXISTS UnreadMandatory, CourseQueuePositions CASCADE;
@@ -142,3 +144,6 @@ FROM students s
 	ss.count < 1 OR
 	rec.sum < 10
 );
+
+
+-- TDA357_050 - GRUPP 93- Betina Andersson, Fressia Merino & Shahad Naji
