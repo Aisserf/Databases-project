@@ -1,3 +1,5 @@
+-- TDA357_050 - GRUPP 93- Betina Andersson, Fressia Merino & Shahad Naji
+
 DROP TRIGGER IF EXISTS tryRegistrations ON Registrations CASCADE;
 
 CREATE or replace FUNCTION try_register() RETURNS trigger AS $$
