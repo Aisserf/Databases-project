@@ -157,3 +157,5 @@ CREATE TABLE hosting_Deptarment(
   prog_name    TEXT REFERENCES Programs(prog_name) NOT NULL,
   PRIMARY KEY (dept_id, prog_name)
 );
+
+-- TDA357_050 - GRUPP 93- Betina Andersson, Fressia Merino & Shahad Naji
