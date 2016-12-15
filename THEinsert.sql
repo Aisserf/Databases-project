@@ -1,3 +1,5 @@
+-- TDA357_050 - GRUPP 93- Betina Andersson, Fressia Merino & Shahad Naji
+
 INSERT INTO Departments(dept_id, dept_name) VALUES ('CS','Computer Science');
 INSERT INTO Departments(dept_id, dept_name) VALUES ('IT','Information Technology');
 INSERT INTO Departments(dept_id, dept_name) VALUES ('MS','Mathematical Sciences');
@@ -147,4 +149,4 @@ INSERT INTO hosting_Deptarment (dept_id, prog_name) VALUES ('IT','Industrial Eco
 INSERT INTO hosting_Deptarment (dept_id, prog_name) VALUES ('MS','Machine Engineering');
 
 
--- TDA357_050 - Betina Andersson, Shahad Naji & Fressia Merino
+--- TDA357_050 - GRUPP 93- Betina Andersson, Fressia Merino & Shahad Naji
