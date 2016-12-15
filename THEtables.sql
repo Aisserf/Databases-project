@@ -110,7 +110,7 @@ CREATE TABLE Finished_Courses(
   stud_id   TEXT  REFERENCES Students(stud_Id) ,
   grade     text  NOT NULL,
   PRIMARY KEY(course_code, stud_id),
-  constraint grade CHECK (grade = '3' and grade = '4' and grade = '5' and grade = 'U')
+  constraint grade CHECK (grade = '3' OR grade = '4' OR grade = '5' OR grade = 'U')
 );
 --__________________________________________________________________________
 
