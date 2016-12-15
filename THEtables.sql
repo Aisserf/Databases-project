@@ -1,3 +1,5 @@
+-- TDA357_050 - GRUPP 93- Betina Andersson, Fressia Merino & Shahad Naji
+
 DROP TABLE IF EXISTS Departments CASCADE;
 DROP TABLE IF EXISTS Programs CASCADE;
 DROP TABLE IF EXISTS Courses CASCADE;
