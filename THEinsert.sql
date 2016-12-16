@@ -112,8 +112,8 @@ INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LMT211','Clark
 ------------------------------------------------------------------------------------------
 
 INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALUES('TDA357','Computer Languages','Computer Engineering');
-INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALUES('LEU500','Interaction Design','Computer Engineering');
-INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALUES('TDA357','Software Engineering','Computer Engineering');
+INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALUES('LEU500','Interaction Design','Industrial Economy and Production');
+INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALUES('TDA357','Software Engineering','Electrical Engineering');
 INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALUES('LMT211','Energy','Marine Engineering');
 INSERT INTO Recommended_Course_Branch (course_code, branch_name, prog_name) VALUES('MVE415','Materials','Machine Engineering');
 
