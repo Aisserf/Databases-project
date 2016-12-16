@@ -121,7 +121,7 @@ CREATE TABLE Recommended_Course_Branch(
   branch_name TEXT REFERENCES Branches(branch_name),
   prog_name TEXT REFERENCES Programs(prog_name),
   PRIMARY KEY(course_code, branch_name, prog_name),
-  FOREIGN KEY (prog_name, branch_name) REFERENCES Branches(prg_name, branch_name)
+  FOREIGN KEY (prog_name, branch_name) REFERENCES Branches(prog_name, branch_name)
 );
 --_____________________________________________________________________
 
@@ -130,7 +130,7 @@ CREATE TABLE Mandatory_Course_Branch(
   branch_name  TEXT REFERENCES  Branches(branch_name),
   prog_name  TEXT REFERENCES Programs(prog_name),
   PRIMARY KEY(course_code,branch_name,prog_name),
-  FOREIGN KEY (prog_name, branch_name) REFERENCES Branches(prg_name, branch_name)
+  FOREIGN KEY (prog_name, branch_name) REFERENCES Branches(prog_name, branch_name)
 );
 --________________________
 
