@@ -1,5 +1,6 @@
 -- TDA357_050 - GRUPP 93- Betina Andersson, Fressia Merino & Shahad Naji
 
+--trigger1
 DROP TRIGGER IF EXISTS tryRegistrations ON Registrations CASCADE;
 
 CREATE or replace FUNCTION try_register() RETURNS trigger AS $$
@@ -29,9 +30,9 @@ BEGIN
 	--check if student already registered
 	IF EXISTS (
 		SELECT stud_id
-		FROM Students_Registered_To_Course
+		FROM Registrations
 		WHERE stud_id = NEW.stud_id AND course_code =  NEW.course_code
-	) THEN RAISE EXCEPTION 'student is already registered to course';
+	) THEN RAISE EXCEPTION 'student is already registered to course or waintiiiiiin';
 	END IF;
 	
 	--Check if course is full, put student on waitig list
@@ -58,7 +59,6 @@ CREATE TRIGGER tryRegistrations
 INSTEAD OF INSERT ON Registrations
 FOR EACH ROW
 EXECUTE PROCEDURE try_register();
-
 
 -----------------------------------------------------Second Trigger - comming soon!--------
 
