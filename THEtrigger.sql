@@ -124,10 +124,10 @@ AND students_registered_to_course.stud_id = OLD.stud_id;
     VALUES (OLD.course_code, firstInQ);
     DELETE FROM waiting_list 
     WHERE waiting_list.course_code = OLD.course_code AND waiting_list.stud_id = firstInQ;
+    UPDATE waiting_list SET position = position -1 WHERE course_code = OLD.course_code;
     END IF;
   ELSE
-  INSERT INTO students_registered_to_course(course_code, stud_id)
-  VALUES (OLD.course_code, firstInQ);
+    DELETE FROM students_registered_to_course WHERE course_code = OLD.course_code AND stud_id = OLD.stud_id;
   END IF;
 
 --Check if student is queuing
@@ -135,6 +135,7 @@ AND students_registered_to_course.stud_id = OLD.stud_id;
   THEN
   DELETE FROM waiting_list 
   WHERE waiting_list.course_code = OLD.course_code AND waiting_list.stud_id = OLD.stud_id;
+  UPDATE waiting_list SET position = position -1 WHERE course_code = OLD.course_code;
   ELSE
   RAISE EXCEPTION 'This student is not on que, nor is she registered';
 END IF;
