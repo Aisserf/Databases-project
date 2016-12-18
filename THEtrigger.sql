@@ -11,7 +11,7 @@ BEGIN
 		SELECT stud_id --, course_code
 		FROM finished_courses
 		WHERE stud_id = NEW.stud_id AND course_code = NEW.course_code
-	) THEN RAISE Notice '% has passed the course already', NEW.stud_id;
+	) THEN RAISE EXCEPTION '% has passed the course already', NEW.stud_id;
 	END IF;
 	
  	-- check if course required courses are passed
