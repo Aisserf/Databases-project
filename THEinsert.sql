@@ -24,6 +24,7 @@ INSERT INTO Courses (course_name, course_code, credits, dept_id) VALUES ('Progra
 INSERT INTO Courses (course_name, course_code, credits, dept_id) VALUES ('Machine oriented Programming','LEU500',10, 'IT');
 INSERT INTO Courses (course_name, course_code, credits, dept_id) VALUES ('Mathematical analysis','MVE415',5, 'MS');
 INSERT INTO Courses (course_name, course_code, credits, dept_id) VALUES ('Linear Algebra','LMT211',10, 'MS');
+INSERT INTO Courses (course_name, course_code, credits, dept_id) VALUES ('Vinprovning','vin123',40, 'VP');
 
 ------------------------------------------------------------------------------------------
 
@@ -66,6 +67,7 @@ INSERT INTO Has_Classification(class_name, course_code) VALUES ('seminar course'
 INSERT INTO Has_Classification(class_name, course_code) VALUES ('research course','LEU482');
 INSERT INTO Has_Classification(class_name, course_code) VALUES ('mathematical course','LEU500');
 INSERT INTO Has_Classification(class_name, course_code) VALUES ('seminar course','MVE415');
+INSERT INTO Has_Classification(class_name, course_code) VALUES ('seminar course','vin123');
 
 ------------------------------------------------------------------------------------------
 
@@ -83,10 +85,10 @@ INSERT INTO Mandatory_Course_Program (course_code, prog_name) VALUES ('LET625','
 
 ------------------------------------------------------------------------------------------
 
-INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('TDA357','shahadt');
+INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('vin123','shahadt');
 INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('LET625','espinod');
-INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('TDA357','betr');
-INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('DAT050','cocob');
+INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('vin123','betr');
+INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('vin123','cocob');
 INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('LEU482','joseg');
 INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('LET625','isbele');
 INSERT INTO Students_Registered_To_Course (course_code, stud_id) VALUES ('DAT050','shahadt');
@@ -99,6 +101,7 @@ INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('TDA357','shaha
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('DAT050','espinod','5');
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LET625','betr','3');
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('DAT050','cocob','3');
+INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('MVE415','cocob','4');
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('LET625','joseg','4');
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('TDA357','isbele','5');
 INSERT INTO Finished_Courses(course_code, stud_id, grade) VALUES('TDA357','ClarkKent','5');
@@ -136,7 +139,7 @@ INSERT INTO Stud_Chooses_Branch (stud_id, branch_name, prog_name) VALUES('ClarkK
 
 ------------------------------------------------------------------------------------------
 
-INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('isbele','TDA357','1');
+INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('espinod','TDA357','1');
 INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('joseg','DAT050','1');
 INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('espinod','MVE415','1');
 INSERT INTO Waiting_List(stud_id, course_code, position) VALUES('shahadt','MVE415','2');
