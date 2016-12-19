@@ -14,8 +14,8 @@ import java.io.*;  // Reading user input.
 public class StudentPortal
 {
     /* TODO Here you should put your database name, username and password */
-    static final String USERNAME = "tda357_050";
-    static final String PASSWORD = "CFpcVCwU";
+    static final String USERNAME ="";
+    static final String PASSWORD ="xxxx";
 
     /* Print command usage.
      * /!\ you don't need to change this function! */
