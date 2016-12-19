@@ -1,5 +1,5 @@
 # Databases-project
-Project in course Databases H2016
+Project in course Databases
 
 
 If you need a README-file, then you shouldn't be on Github.
